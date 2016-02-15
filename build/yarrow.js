@@ -58,6 +58,8 @@
       , textStartOffset = (typeof _.textStartOffset === 'function'
           ? _.textStartOffset(_, utils, textReverseDirection)
           : _.textStartOffset) || 0
+      , textDx = _.textDx || 0
+      , textDy = _.textDy || -5
       , margin = { top: 20, right: 20, bottom: 20, left: 20}
       , width = Math.abs(_.dx)
       , height = Math.abs(_.dy)
@@ -152,7 +154,8 @@
       var label = g.append('text')
         .attrs({
           class: 'arrow text',
-          dy: -10
+          dx: textDx,
+          dy: textDy
         })
       var textPath = label.append('textPath')
         .attrs({

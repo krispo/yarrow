@@ -1,0 +1,32 @@
+{
+  "name": "yarrow",
+  "version": "1.0.0",
+  "description": "svg based animated arrow pointer",
+  "keywords": [
+    "svg",
+    "arrow",
+    "pointer",
+    "path",
+    "animate"
+  ],
+  "homepage": "https://github.com/krispo/yarrow",
+  "license": "MIT",
+  "main": "build/yarrow.js",
+  "jsnext:main": "index",
+  "scripts": {
+    "build": "mkdir -p build && rollup -f umd -g d3-selection:d3_selection -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
+    "uglify": "uglifyjs build/yarrow.js -c -m -o build/yarrow.min.js"
+  },
+  "author": "Konstantin Skipor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krispo/yarrow.git"
+  },
+  "devDependencies": {
+    "rollup": "^0.25.4",
+    "uglify-js": "^2.6.1"
+  },
+  "dependencies": {
+    "d3-selection-multi": "^0.2.9"
+  }
+}

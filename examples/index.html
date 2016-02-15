@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yarrow examples</title>
+
+  <link href="../build/yarrow.css" rel="stylesheet" type="text/css"/>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+
+  <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
+  <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
+  <script src="../build/yarrow.js"></script>
+
+  <script>
+    var yar;
+    document.addEventListener('DOMContentLoaded', function main() {
+      yar = new yarrow.Yarrow();
+      document.addEventListener("click", printMousePos);
+    });
+
+    function printMousePos(e) {
+      var cursorX = e.pageX;
+      var cursorY = e.pageY;
+
+      var el = document.getElementById('goal');
+      var rect = el.getBoundingClientRect();
+
+      var x = cursorX
+          , y = cursorY
+          , dx = rect.left + 8 - x
+          , dy = rect.top + 8 - y
+          ;
+      yar
+          .arrow({
+            x: x,
+            y: y,
+            dx: dx,
+            dy: dy,
+            text: 'Hello World!',
+            textReverseDirection: function(_, u){
+              return _.dx < 0;
+            },
+            textStartOffset: function(_,u,textReverseDirection){
+              return textReverseDirection ? 95 : 10
+            }
+          })
+          .render()
+          .dispose(1000, 500);
+    }
+  </script>
+</head>
+<body>
+  <div id="goal" style="position: absolute; top: 50%;left: 50%;width: 5px;height: 5px;border: 5px solid red; border-radius: 50%;"></div>
+</body>
+</html>

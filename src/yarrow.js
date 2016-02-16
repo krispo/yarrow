@@ -16,6 +16,16 @@ var Yarrow = function(){
     return a;
   }
 
+  yarrow.arrows = function(_, el){
+    if (!arguments.length) return arrows;
+    el = el || document.body;
+
+    _.forEach(function(_){
+      arrows.push(new Arrow(this, _, el))
+    })
+    return this;
+  }
+
   yarrow.remove = function remove(id){
     for (var i = -1, n = arrows.length; i++ < n;) {
       if (arrows[i].id === id) return arrows.splice(i, 1);

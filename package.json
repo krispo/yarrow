@@ -14,8 +14,10 @@
   "main": "build/yarrow.js",
   "jsnext:main": "index",
   "scripts": {
+    "uglify": "uglifyjs build/yarrow.js -c -m -o build/yarrow.min.js",
     "build": "mkdir -p build && rollup -f umd -g d3-selection:d3_selection -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
-    "uglify": "uglifyjs build/yarrow.js -c -m -o build/yarrow.min.js"
+    "test": "faucet test/*-test.js",
+    "prepublish": "npm run build"
   },
   "author": "Konstantin Skipor",
   "repository": {
@@ -23,7 +25,9 @@
     "url": "https://github.com/krispo/yarrow.git"
   },
   "devDependencies": {
+    "faucet": "0.0.1",
     "rollup": "^0.25.4",
+    "tape": "^4.4.0",
     "uglify-js": "^2.6.1"
   },
   "dependencies": {

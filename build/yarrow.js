@@ -34,6 +34,17 @@
       }
     }
 
+    yarrow.renderAll = function(){
+      arrows.forEach(function(a){ a.render(); });
+      return this;
+    }
+
+    yarrow.disposeAll = function(){
+      var _arrows = arrows.slice();
+      _arrows.forEach(function(a){ a.dispose(); });
+      return this;
+    }
+
     return yarrow;
   }
 

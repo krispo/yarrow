@@ -10,8 +10,9 @@ test('Yarrow tests', function(t){
   t.test('add single arrow', function(t){
     var document = jsdom.jsdom("<body>");
     var ya = new yarrow.Yarrow();
-    ya.arrow({}, document.body);
+    var a = ya.arrow({}, document.body);
     t.equal(ya.arrows().length, 1);
+    t.equal(typeof a.render, 'function');
     t.end();
   });
 
@@ -29,6 +30,17 @@ test('Yarrow tests', function(t){
     var ya = new yarrow.Yarrow();
     ya.arrows([{}, {}, {}], document.body);
     t.equal(ya.arrows().length, 3);
+    t.equal(typeof ya.arrows()[0].render, 'function');
+    t.end();
+  });
+
+  t.test('.renderAll() should render all arrows', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    ya.arrows([{}, {}, {}], document.body);
+    t.equal(document.querySelectorAll('.yarrow').length, 0);
+    ya.renderAll();
+    t.equal(document.querySelectorAll('.yarrow').length, 3);
     t.end();
   });
 
@@ -56,7 +68,7 @@ test('Arrow tests', function(t){
     t.end();
   });
 
-  t.test('.dispose() should remove arrow from the DOM after rendering', function(t){
+  t.test('.dispose() should remove rendered arrow from the DOM', function(t){
     var document = jsdom.jsdom("<body>");
     var ya = new yarrow.Yarrow();
     var a = ya.arrow({}, document.body);

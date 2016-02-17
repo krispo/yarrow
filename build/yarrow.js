@@ -112,10 +112,19 @@
           d: typeof d === 'function' ? d(_, utils) : d
         });
 
-      var l = path.node().getTotalLength();
-      var p0 = path.node().getPointAtLength(l - 1);
-      var p = path.node().getPointAtLength(l);
-      var alpha = utils.angle(p0,p);
+      var pn = path.node(), l, p0, p, alpha;
+      //check if svg is available
+      var isSVG = typeof pn.getTotalLength === 'function';
+      if (isSVG) {
+        l = pn.getTotalLength();
+        p0 = pn.getPointAtLength(l - 1);
+        p = pn.getPointAtLength(l);
+      } else {
+        l = 0;
+        p0 = { x: 0, y: 0 };
+        p = { x: 0, y: 0 };
+      }
+      alpha = utils.angle(p0,p);
 
       path.styles({
         'animation-duration': duration/1000 + 's',
@@ -132,7 +141,7 @@
           d: typeof d1 === 'function' ? d1(_, utils) : d1,
           transform: 'translate(' + p.x + ',' + p.y + ')rotate(' + alpha + ')'
         });
-      var l1 = tip1.node().getTotalLength();
+      var l1 = isSVG ? tip1.node().getTotalLength() : 0;
       tip1.styles({
         'animation-duration': duration1/1000 + 's',
         'animation-delay': delay1/1000 + 's',
@@ -148,7 +157,7 @@
           d: typeof d2 === 'function' ? d2(_, utils) : d2,
           transform: 'translate(' + p.x + ',' + p.y + ')rotate(' + alpha + ')'
         });
-      var l2 = tip2.node().getTotalLength();
+      var l2 = isSVG ? tip2.node().getTotalLength() : 0;
       tip2.styles({
         'animation-duration': duration2/1000 + 's',
         'animation-delay': delay2/1000 + 's',

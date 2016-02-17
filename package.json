@@ -16,6 +16,7 @@
   "scripts": {
     "uglify": "uglifyjs build/yarrow.js -c -m -o build/yarrow.min.js",
     "build": "mkdir -p build && rollup -f umd -g d3-selection:d3_selection -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
+    "pretest": "npm run build",
     "test": "faucet test/*-test.js",
     "prepublish": "npm run build"
   },

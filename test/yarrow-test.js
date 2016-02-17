@@ -44,6 +44,18 @@ test('Yarrow tests', function(t){
     t.end();
   });
 
+  t.test('.disposeAll() should dispose all arrows', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    ya.arrows([{}, {}, {}], document.body);
+    t.equal(document.querySelectorAll('.yarrow').length, 0);
+    ya.renderAll();
+    t.equal(document.querySelectorAll('.yarrow').length, 3);
+    ya.disposeAll();
+    t.equal(document.querySelectorAll('.yarrow').length, 0);
+    t.end();
+  });
+
   t.end();
 })
 

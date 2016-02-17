@@ -22,8 +22,9 @@
       if (!arguments.length) return arrows;
       el = el || document.body;
 
+      var self = this;
       _.forEach(function(_){
-        arrows.push(new Arrow(this, _, el))
+        arrows.push(new Arrow(self, _, el))
       })
       return this;
     }

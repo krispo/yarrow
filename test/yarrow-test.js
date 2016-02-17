@@ -70,6 +70,38 @@ test('Arrow tests', function(t){
     t.end();
   });
 
+  t.test('multiple .render() should not create extra arrows in the DOM', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow({}, document.body);
+    t.equal(document.querySelectorAll('.yarrow').length, 0);
+    a.render();
+    t.equal(document.querySelectorAll('.yarrow').length, 1);
+    a.render();
+    t.equal(document.querySelectorAll('.yarrow').length, 1);
+    a.render().render();
+    t.equal(document.querySelectorAll('.yarrow').length, 1);
+    t.end();
+  });
+
+  t.test('multiple .render() should not create extra arrows in the DOM with multiple arrows', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a1 = ya.arrow({}, document.body);
+    var a2 = ya.arrow({}, document.body);
+    var a3 = ya.arrow({}, document.body);
+    t.equal(document.querySelectorAll('.yarrow').length, 0);
+    a1.render();
+    a2.render();
+    a3.render();
+    t.equal(document.querySelectorAll('.yarrow').length, 3);
+    a1.render().render();
+    a2.render().render();
+    a3.render().render();
+    t.equal(document.querySelectorAll('.yarrow').length, 3);
+    t.end();
+  });
+
   t.test('.dispose() should remove arrow globally', function(t){
     var document = jsdom.jsdom("<body>");
     var ya = new yarrow.Yarrow();

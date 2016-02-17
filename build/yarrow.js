@@ -95,6 +95,7 @@
     arrow.id = id;
 
     arrow.render = function(){
+      root.select('#' + id).remove();
       svg = root.append('svg')
         .attrs({
           id: id,

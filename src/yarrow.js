@@ -233,6 +233,53 @@ var Arrow = function(parent, _, el){
     }
   }
 
+  // get/set specific options
+  arrow.duration = function(_){
+    if (!arguments.length) return duration;
+    duration = _;
+    return this;
+  }
+  arrow.delay = function(_){
+    if (!arguments.length) return delay;
+    delay = _;
+    return this;
+  }
+  arrow.d = function(_){
+    if (!arguments.length) return d;
+    d = _;
+    return this;
+  }
+  arrow.duration1 = function(_){
+    if (!arguments.length) return duration1;
+    duration1 = _;
+    return this;
+  }
+  arrow.delay1 = function(_){
+    if (!arguments.length) return delay1;
+    delay1 = _;
+    return this;
+  }
+  arrow.d1 = function(_){
+    if (!arguments.length) return d1;
+    d1 = _;
+    return this;
+  }
+  arrow.duration2 = function(_){
+    if (!arguments.length) return duration2;
+    duration2 = _;
+    return this;
+  }
+  arrow.delay2 = function(_){
+    if (!arguments.length) return delay2;
+    delay2 = _;
+    return this;
+  }
+  arrow.d2 = function(_){
+    if (!arguments.length) return d1;
+    d1 = _;
+    return this;
+  }
+
   return arrow;
 }
 

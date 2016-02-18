@@ -279,6 +279,31 @@ var Arrow = function(parent, _, el){
     d1 = _;
     return this;
   }
+  arrow.text = function(_){
+    if (!arguments.length) return text;
+    text = _;
+    return this;
+  }
+  arrow.textReverseDirection = function(_){
+    if (!arguments.length) return textReverseDirection;
+    textReverseDirection = _;
+    return this;
+  }
+  arrow.textStartOffset = function(_){
+    if (!arguments.length) return textStartOffset;
+    textStartOffset = _;
+    return this;
+  }
+  arrow.textDx = function(_){
+    if (!arguments.length) return textDx;
+    textDx = _;
+    return this;
+  }
+  arrow.textDy = function(_){
+    if (!arguments.length) return textDy;
+    textDy = _;
+    return this;
+  }
 
   return arrow;
 }

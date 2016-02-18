@@ -49,8 +49,20 @@ Render all arrows at a time.
 #### .disposeAll(duration, delay)
 Dispose all arrows with specified *duration*, and after specified *delay* time. Arrows are removed completely.
 
-#### *opts*
-Options currently include the following properties:
+### Arrow
+Single arrow instance. Available options are listed below.
+
+#### .render()
+Render the current arrow.
+
+#### .dispose(duration, delay)
+Dispose the current arrow with specified *duration*, and after specified *delay* time. The arrow is removed completely.
+
+#### .*option_name*(*option_value*)
+*option_name* can take any option from available list of options *opts*. If *option_value* is not specified, returns current option value.
+
+### *opts*
+Available arrow options:
 
 * **x** --- x page coordinate 
 * **y** --- y page coordinate
@@ -74,15 +86,6 @@ Options currently include the following properties:
 * **textStartOffset** --- text offset from the `start` of the path (or from the `end` of the path if used `textReverseDirection`)
 * **textDx** --- horizontal text offset
 * **textDy** --- vertical text offset
-
-### Arrow
-Single arrow instance
-
-#### .render()
-Render the current arrow.
-
-#### .dispose(duration, delay)
-Dispose the current arrow with specified *duration*, and after specified *delay* time. The arrow is removed completely.
 
 ## Licence
 MIT

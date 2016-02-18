@@ -52,28 +52,28 @@ Dispose all arrows with specified *duration*, and after specified *delay* time. 
 #### *opts*
 Options currently include the following properties:
 
-**x** --- x page coordinate 
-**y** --- y page coordinate
-**dx** --- x target offset
-**dy** --- y target offset
+* **x** --- x page coordinate 
+* **y** --- y page coordinate
+* **dx** --- x target offset
+* **dy** --- y target offset
     
-**duration** --- render duration for the arrow curve
-**delay** --- delay before start rendering for the arrow curve
-**d** --- path for the arrow curve (by default it's a simple line) 
+* **duration** --- render duration for the arrow curve
+* **delay** --- delay before start rendering for the arrow curve
+* **d** --- path for the arrow curve (by default it's a simple line) 
     
-**duration1** --- render duration for the first tip
-**delay1** --- delay before start rendering for the first tip
-**d1** --- path for the first tip (by default it's a simple line) 
+* **duration1** --- render duration for the first tip
+* **delay1** --- delay before start rendering for the first tip
+* **d1** --- path for the first tip (by default it's a simple line) 
         
-**duration2** --- render duration for the second tip
-**delay2** --- delay before start rendering for the second tip
-**d2** --- path for the second tip (by default it's a simple line)            
+* **duration2** --- render duration for the second tip
+* **delay2** --- delay before start rendering for the second tip
+* **d2** --- path for the second tip (by default it's a simple line)            
     
-**text** --- label text for arrow
-**textReverseDirection** --- direct arrow text in a `end -> start` way (default direction is `start -> end`) 
-**textStartOffset** --- text offset from the `start` of the path (or from the `end` of the path if used `textReverseDirection`)
-**textDx** --- horizontal text offset
-**textDy** --- vertical text offset
+* **text** --- label text for arrow
+* **textReverseDirection** --- direct arrow text in a `end -> start` way (default direction is `start -> end`) 
+* **textStartOffset** --- text offset from the `start` of the path (or from the `end` of the path if used `textReverseDirection`)
+* **textDx** --- horizontal text offset
+* **textDy** --- vertical text offset
 
 ### Arrow
 Single arrow instance

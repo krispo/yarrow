@@ -54,7 +54,11 @@ var Arrow = function(parent, _, el){
   var utils = new Utils();
   var id = 'id' + Math.random().toString(36).substr(2, 10)
     , root = d3s.select(el)
-
+      // options
+    , x = _.x || 0
+    , y = _.y || 0
+    , dx = _.dx || 100
+    , dy = _.dy || 0
     , duration = _.duration || 300
     , delay = _.delay || 0
     , d = _.d || function(_, utils){
@@ -67,7 +71,7 @@ var Arrow = function(parent, _, el){
         return utils.m(0,0) + utils.l(-20,-10);
       }
     , duration2 = _.duration2 || duration1
-    , delay2 = _.delay || duration + delay
+    , delay2 = _.delay2 || duration + delay
     , d2 = _.d2 || function(_, utils){
         return utils.m(0,0) + utils.l(-20,10);
       }
@@ -234,6 +238,26 @@ var Arrow = function(parent, _, el){
   }
 
   // get/set specific options
+  arrow.x = function(_){
+    if (!arguments.length) return x;
+    x = _;
+    return this;
+  }
+  arrow.y = function(_){
+    if (!arguments.length) return y;
+    y = _;
+    return this;
+  }
+  arrow.dx = function(_){
+    if (!arguments.length) return dx;
+    dx = _;
+    return this;
+  }
+  arrow.dy = function(_){
+    if (!arguments.length) return dy;
+    dy = _;
+    return this;
+  }
   arrow.duration = function(_){
     if (!arguments.length) return duration;
     duration = _;

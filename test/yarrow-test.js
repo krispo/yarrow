@@ -57,7 +57,56 @@ test('Yarrow tests', function(t){
   });
 
   t.end();
-})
+});
+
+test('Yarrow tests with options', function(t){
+  var opts = {
+    x: 0,
+    y: 0,
+    dx: 100,
+    dy: 100,
+    duration: 1000,
+    delay: 500,
+    d: 'M0,0 L100,100',
+    duration1: 500,
+    delay1: 1500,
+    d1: 'M0,0 L20,20',
+    duration2: 500,
+    delay2: 1500,
+    d2: 'M0,0 L20,20',
+    text: 'Hello World',
+    textReverseDirection: true,
+    textStartOffset: 100,
+    textDx: 10,
+    textDy: 10
+  };
+
+  t.test('add single arrow with options', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+
+    var a = ya.arrow(opts, document.body);
+    t.equal(a.x(), 0);
+    t.equal(a.y(), 0);
+    t.equal(a.dx(), 100);
+    t.equal(a.dy(), 100);
+    t.equal(a.duration(), 1000);
+    t.equal(a.delay(), 500);
+    t.equal(a.d(), 'M0,0 L100,100');
+    t.equal(a.duration1(), 500);
+    t.equal(a.delay1(), 1500);
+    t.equal(a.d1(), 'M0,0 L20,20');
+    t.equal(a.duration2(), 500);
+    t.equal(a.delay2(), 1500);
+    t.equal(a.d2(), 'M0,0 L20,20');
+    t.equal(a.text(), 'Hello World');
+    t.equal(a.textReverseDirection(), true);
+    t.equal(a.textStartOffset(), 100);
+    t.equal(a.textDx(), 10);
+    t.equal(a.textDy(), 10);
+    t.end();
+  });
+});
 
 test('Arrow tests', function(t){
 

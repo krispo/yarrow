@@ -64,19 +64,13 @@
       y: opts.y || 0,
       dx: opts.dx || 100,
       dy: opts.dy || 0,
-      duration: opts.duration || 300,
-      delay: opts.delay || 0,
       d: opts.d || function(_, utils){
         return  utils.m(_.dx > 0 ? 0 : Math.abs(_.dx), _.dy > 0 ? 0 : Math.abs(_.dy))
           + utils.l(_.dx > 0 ? _.dx : 0, _.dy > 0 ? _.dy :0);
       },
-      duration1: opts.duration1 || 200,
-      delay1: opts.delay1 || opts.duration + opts.delay,
       d1: opts.d1 || function(_, utils){
         return utils.m(0,0) + utils.l(-20,-10);
       },
-      duration2: opts.duration2 || opts.duration1,
-      delay2: opts.delay2 || opts.duration + opts.delay,
       d2: opts.d2 || function(_, utils){
         return utils.m(0,0) + utils.l(-20,10);
       },
@@ -84,6 +78,13 @@
       textDx: opts.textDx || 0,
       textDy: opts.textDy || -5
     };
+    // calculate duration and delay options for path
+    _.duration = opts.duration || 300;
+    _.delay = opts.delay || 0;
+    _.duration1 = opts.duration1 || 200;
+    _.delay1 = opts.delay1 || _.duration + _.delay;
+    _.duration2 = opts.duration2 || _.duration1;
+    _.delay2 = opts.delay2 || _.duration + _.delay;
     // calculate extra options for text
     _.textReverseDirection = (typeof opts.textReverseDirection === 'function' ? opts.textReverseDirection(_, utils) : opts.textReverseDirection) || false;
     _.textStartOffset= (typeof opts.textStartOffset === 'function' ? opts.textStartOffset(_, utils, _.textReverseDirection) : opts.textStartOffset) || 0;

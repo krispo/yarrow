@@ -1,6 +1,6 @@
 {
   "name": "yarrow",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "svg based animated arrow pointer",
   "keywords": [
     "svg",
@@ -15,7 +15,7 @@
   "jsnext:main": "index",
   "scripts": {
     "uglify": "uglifyjs build/yarrow.js -c -m -o build/yarrow.min.js",
-    "build": "mkdir -p build && rollup -f umd -g d3-selection:d3_selection -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
+    "build": "mkdir -p build && rollup -f umd -g d3-selection:d3_selection,svg-path-utils:svg_path_utils -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
     "pretest": "npm run build",
     "test": "faucet test/*-test.js",
     "prepublish": "npm run build"
@@ -33,6 +33,7 @@
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
-    "d3-selection-multi": "^0.2.9"
+    "d3-selection-multi": "^0.2.9",
+    "svg-path-utils": "^0.0.1"
   }
 }

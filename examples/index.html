@@ -41,8 +41,8 @@
             textReverseDirection: function(_, u){
               return _.dx < 0;
             },
-            textStartOffset: function(_,u,textReverseDirection){
-              return textReverseDirection ? 95 : 10
+            textStartOffset: function(_, u){
+              return _.textReverseDirection ? 95 : 10
             }
           })
           .render()

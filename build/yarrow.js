@@ -64,15 +64,17 @@
       y: opts.y || 0,
       dx: opts.dx || 100,
       dy: opts.dy || 0,
-      d: opts.d || function(_, utils){
-        return  utils.M(_.dx > 0 ? 0 : Math.abs(_.dx), _.dy > 0 ? 0 : Math.abs(_.dy))
-          + utils.L(_.dx > 0 ? _.dx : 0, _.dy > 0 ? _.dy :0);
+      d: opts.d || function(_, u){
+        return  u.join(
+          u.M(_.dx > 0 ? 0 : Math.abs(_.dx), _.dy > 0 ? 0 : Math.abs(_.dy)),
+          u.L(_.dx > 0 ? _.dx : 0, _.dy > 0 ? _.dy :0)
+        );
       },
-      d1: opts.d1 || function(_, utils){
-        return utils.m(0,0) + utils.l(-20,-10);
+      d1: opts.d1 || function(_, u){
+        return u.join(u.m(0,0), u.l(-20,-10));
       },
-      d2: opts.d2 || function(_, utils){
-        return utils.m(0,0) + utils.l(-20,10);
+      d2: opts.d2 || function(_, u){
+        return u.join(u.m(0,0), u.l(-20,10));
       },
       text: opts.text,
       textDx: opts.textDx || 0,
@@ -87,7 +89,7 @@
     _.delay2 = opts.delay2 || _.duration + _.delay;
     // calculate extra options for text
     _.textReverseDirection = (typeof opts.textReverseDirection === 'function' ? opts.textReverseDirection(_, utils) : opts.textReverseDirection) || false;
-    _.textStartOffset= (typeof opts.textStartOffset === 'function' ? opts.textStartOffset(_, utils, _.textReverseDirection) : opts.textStartOffset) || 0;
+    _.textStartOffset= (typeof opts.textStartOffset === 'function' ? opts.textStartOffset(_, utils) : opts.textStartOffset) || 0;
 
     arrow.id = id;
 

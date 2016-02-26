@@ -2,54 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Yarrow examples</title>
+  <title>Yarrow - svg-based animated pointer</title>
 
   <link href="//rawgit.com/krispo/yarrow/master/build/yarrow.css" rel="stylesheet" type="text/css"/>
   <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/languages/javascript.min.js"></script>
 
   <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
   <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
   <script src="//rawgit.com/krispo/svg-path-utils/master/build/svg-path-utils.min.js"></script>
   <script src="//rawgit.com/krispo/yarrow/master/build/yarrow.js"></script>
-
-  <script>
-    var yar;
-    document.addEventListener('DOMContentLoaded', function main() {
-      yar = new yarrow.Yarrow();
-      document.addEventListener("click", printMousePos);
-    });
-    function printMousePos(e) {
-      var cursorX = e.pageX;
-      var cursorY = e.pageY;
-      var el = document.getElementById('goal');
-      var rect = el.getBoundingClientRect();
-      var x = cursorX
-          , y = cursorY
-          , dx = rect.left + 8 - x
-          , dy = rect.top + 8 - y
-          ;
-      yar
-          .arrow({
-            x: x,
-            y: y,
-            dx: dx,
-            dy: dy,
-            text: 'Hello World!',
-            textReverseDirection: function(_, u){
-              return _.dx < 0;
-            },
-            textStartOffset: function(_,u){
-              return _.textReverseDirection ? 95 : 10
-            }
-          })
-          .render()
-          .dispose(1500, 500);
-    }
-  </script>
 </head>
 <body>
-<div style="width: 100%; text-align: center"><a href="https://github.com/krispo/yarrow">Github</a></div>
-<div style="width: 100%; text-align: center">Please, click on a page...</div>
-<div id="goal" style="position: absolute; top: 50%;left: 50%;width: 5px;height: 5px;border: 5px solid red; border-radius: 50%;"></div>
+<header>
+  <div class="title">Yarrow</div>
+  <div class="subtitle">Simple svg-based animated arrow pointer</div>
+  <div id="menu">
+    <i class="material-icons">menu</i>
+    <ul>
+      <li><a href="#ex_basic">Basic Example</a></li>
+      <li><a href="#ex_basic2">Path combinations</a></li>
+      <hr>
+      <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
+      <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
+      <li><a href="https://github.com/krispo/yarrow" target="_blank">Github</a></li>
+    </ul>
+  </div>
+
+</header>
+
+<hr>
+
+<section id="content">
+
+  <h1>Examples</h1>
+
+  <div id="ex_basic">
+    <h4>Basic Example</h4>
+    <div class="ex_container">
+      <div id="div1" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var arrow = yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  text: "I'm arrow!"
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  var yar, div;
+  document.addEventListener('DOMContentLoaded', function main() {
+    hljs.initHighlightingOnLoad();
+
+    yar = new yarrow.Yarrow();
+    div = document.getElementById('div1');
+    div.addEventListener("click", rerun);
+
+    rerun();
+  });
+
+  function rerun(e) {
+    yar.disposeAll();
+    yar.arrow({
+          x: 100,
+          y: 220,
+          dx: 200,
+          dy: -140,
+          text: "I'm arrow!",
+          textReverseDirection: function(_, u){
+            return _.dx < 0;
+          },
+          textStartOffset: function(_, u){
+            return _.textReverseDirection ? 95 : 10
+          }
+        }, div)
+        .render();
+  }
+</script>
 </body>
 </html>

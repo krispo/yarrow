@@ -246,6 +246,15 @@ var Arrow = function(parent, opts, el){
     }
   }
 
+  // get/set multiple specific options
+  arrow.options = function(opts){
+    if (!arguments.length) return _;
+    for (var k in opts) {
+      if (_.hasOwnProperty(k)) _[k] = opts[k];
+    }
+    return this;
+  }
+
   // get/set specific options
   arrow.x = function(v){
     if (!arguments.length) return _.x;

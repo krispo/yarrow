@@ -176,3 +176,80 @@ test('Arrow tests', function(t){
 
   t.end();
 })
+
+test('Arrow tests with options', function(t){
+  var opts = {
+    x: 0,
+    y: 0,
+    dx: 100,
+    dy: 100,
+    duration: 1000,
+    delay: 500,
+    d: 'M0,0 L100,100',
+    duration1: 500,
+    delay1: 1500,
+    d1: 'M0,0 L20,20',
+    duration2: 500,
+    delay2: 1500,
+    d2: 'M0,0 L20,20',
+    text: 'Hello World',
+    textReverseDirection: true,
+    textStartOffset: 100,
+    textDx: 10,
+    textDy: 10
+  };
+
+  t.test('.options() should return _', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document.body);
+
+    var _ = a.options();
+    t.equal(_.x, 0);
+    t.equal(_.y, 0);
+    t.equal(_.dx, 100);
+    t.equal(_.dy, 100);
+    t.equal(_.d, 'M0,0 L100,100');
+    t.end();
+  });
+
+  t.test('.options(some_opts) should update _', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document.body);
+    var some_opts = {
+      x: 20,
+      y: 30,
+      dx: 200,
+      dy: 300,
+      d: 'M10,30 C100,100 50,50 0,0'
+    }
+    a.options(some_opts);
+    t.equal(a.x(), 20);
+    t.equal(a.y(), 30);
+    t.equal(a.dx(), 200);
+    t.equal(a.dy(), 300);
+    t.equal(a.d(), 'M10,30 C100,100 50,50 0,0');
+    t.equal(a.duration(), 1000);
+    t.equal(a.d1(), 'M0,0 L20,20');
+    t.end();
+  });
+
+  t.test('.options(bad_opts) should update _ and ignore bad opts', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document.body);
+    var some_opts = {
+      x: 20,
+      y: 30,
+      dxqwe: 200
+    }
+    a.options(some_opts);
+    var _ = a.options();
+    t.equal(a.x(), 20);
+    t.equal(a.y(), 30);
+    t.equal(a.dx(), 100);
+    t.equal(_.dxqwe, undefined);
+    t.end();
+  });
+});

@@ -3,7 +3,10 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   margin: 0;
+  border-top: 2px solid #0070a7;
 }
+
+/* HEADER */
 header { text-align: center; }
 header .title { font-size: 2.5em; margin-top: .5em; }
 header .subtitle { font-size: 1em; margin: .1em; }
@@ -15,13 +18,18 @@ header .subtitle { font-size: 1em; margin: .1em; }
   text-align: right;
   padding: 0 .3em .5em .3em;
   cursor: pointer;
+  outline: 1px solid #000;
 }
 #menu ul {
-  opacity: 0;
+  opacity: 1;
   margin: .5em;
   padding: 0;
   text-align: left;
   list-style: none;
+}
+@media (max-width: 1070px) {
+  #menu { outline: none }
+  #menu ul { opacity: 0; }
 }
 #menu ul > li { padding: 0 .2em .1em .2em;}
 #menu ul > li a { text-decoration: none; color: #000; }
@@ -39,6 +47,7 @@ hr {
 }
 #menu hr { width: 100%; margin: .5em auto;}
 
+/* CONTENT */
 #content {
   width: 60%;
   min-width: 600px;
@@ -53,11 +62,17 @@ hr {
   border: 1px solid #ebebeb;
 }
 .ex_container .output, .code {
+  position: relative;
   width: 50%;
   height: 100%;
 }
 .ex_container .code { background-color: #f8f8f8; }
+.ex_container .code pre { margin: 0; }
 
-pre { margin: 0; }
+.example .notes { margin: .6em 0; }
 
-#div1 { position: relative; }
+/* FOOTER */
+footer {
+  height: 2.5em;
+  background-color: #0070a7;
+}

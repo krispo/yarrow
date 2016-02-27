@@ -26,7 +26,7 @@
     <i class="material-icons">menu</i>
     <ul>
       <li><a href="#ex_basic">Basic Example</a></li>
-      <li><a href="#ex_basic2">Path combinations</a></li>
+      <li><a href="#ex_styles">Styles</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
       <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
@@ -42,12 +42,16 @@
 
   <h1>Examples</h1>
 
-  <div id="ex_basic">
+  <div>Click on example to rerun.</div>
+
+  <div id="ex_basic" class="example">
     <h4>Basic Example</h4>
     <div class="ex_container">
-      <div id="div1" class="output"></div>
+      <div id="ex_basic_output" class="output"></div>
       <div class="code">
-          <pre><code class="javascript">var arrow = yarrow.arrow({
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
   x: 100,
   y: 220,
   dx: 200,
@@ -58,37 +62,49 @@
     </div>
   </div>
 
+  <div id="ex_styles" class="example">
+    <h4>Styles</h4>
+    <div class="ex_container">
+      <div id="ex_styles_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  text: "I'm arrow!",
+  arrowStyles: {
+    'stroke': '#ff5a00',
+    'stroke-width': 6
+  },
+  textStyles: {
+    'fill': '#0070a7',
+    'font-size': 20,
+    'font-weight': 'bold'
+  }
+}).render();</code></pre>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div>Styles also can be defined via <code>css</code>.</div>
+        <pre><code class="css">.arrow { ... }
+.arrow .tip1 { ... }
+.arrow .tip2 { ... }
+.arrow .text { ... }</code></pre>
+    </div>
+
+  </div>
+
 </section>
 
-<script>
-  var yar, div;
-  document.addEventListener('DOMContentLoaded', function main() {
-    hljs.initHighlightingOnLoad();
+<hr>
 
-    yar = new yarrow.Yarrow();
-    div = document.getElementById('div1');
-    div.addEventListener("click", rerun);
+<footer></footer>
 
-    rerun();
-  });
+<script src="app.js"></script>
 
-  function rerun(e) {
-    yar.disposeAll();
-    yar.arrow({
-          x: 100,
-          y: 220,
-          dx: 200,
-          dy: -140,
-          text: "I'm arrow!",
-          textReverseDirection: function(_, u){
-            return _.dx < 0;
-          },
-          textStartOffset: function(_, u){
-            return _.textReverseDirection ? 95 : 10
-          }
-        }, div)
-        .render();
-  }
-</script>
 </body>
 </html>

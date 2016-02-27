@@ -96,7 +96,10 @@ Available arrow options:
         
 * **duration2** --- render duration for the second tip
 * **delay2** --- delay before start rendering for the second tip
-* **d2** --- path for the second tip (by default it's a simple line)            
+* **d2** --- path for the second tip (by default it's a simple line) 
+           
+* **arrowStyles** --- specify styles for arrow
+* **textStyles** --- specify styles for text
     
 * **text** --- label text for arrow
 * **textReverseDirection** --- direct arrow text in a `end -> start` way (default direction is `start -> end`) 

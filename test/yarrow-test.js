@@ -252,4 +252,32 @@ test('Arrow tests with options', function(t){
     t.equal(_.dxqwe, undefined);
     t.end();
   });
+
+  t.test('.arrowStyles(styles) should update _.arrowStyles', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document.body);
+    var styles = {
+      'stroke-width': 6,
+      stroke: 'red'
+    }
+    a.arrowStyles(styles);
+    t.equal(a.arrowStyles()['stroke-width'], 6);
+    t.equal(a.arrowStyles()['stroke'], 'red');
+    t.end();
+  });
+
+  t.test('.textStyles(styles) should update _.textStyles', function(t){
+    var document = jsdom.jsdom("<body>");
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document.body);
+    var styles = {
+      fill: 'red',
+      'font-size': 20
+    }
+    a.textStyles(styles);
+    t.equal(a.textStyles()['fill'], 'red');
+    t.equal(a.textStyles()['font-size'], 20);
+    t.end();
+  });
 });

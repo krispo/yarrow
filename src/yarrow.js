@@ -75,9 +75,11 @@ var Arrow = function(parent, opts, el){
     d2: opts.d2 || function(_, u){
       return u.join(u.m(0,0), u.l(-20,10));
     },
+    arrowStyles: opts.arrowStyles || {},
     text: opts.text,
     textDx: opts.textDx || 0,
-    textDy: opts.textDy || -5
+    textDy: opts.textDy || -5,
+    textStyles: opts.textStyles || {}
   };
   // calculate duration and delay options for path
   _.duration = opts.duration || 300;
@@ -132,7 +134,8 @@ var Arrow = function(parent, opts, el){
         'stroke-linejoin': 'round',
         class: 'arrow',
         d: typeof _.d === 'function' ? _.d(_, utils) : _.d
-      });
+      })
+      .styles(_.arrowStyles);
 
     var pn = path.node(), l, p0, p, alpha;
     //check if svg is available
@@ -169,7 +172,8 @@ var Arrow = function(parent, opts, el){
       'animation-delay': _.delay1/1000 + 's',
       'stroke-dasharray': l1 + ' ' + l1,
       'stroke-dashoffset': l1
-    });
+    })
+      .styles(_.arrowStyles);
 
     var tip2 = g.append('path')
       .attrs({
@@ -185,8 +189,8 @@ var Arrow = function(parent, opts, el){
       'animation-delay': _.delay2/1000 + 's',
       'stroke-dasharray': l2 + ' ' + l2,
       'stroke-dashoffset': l2
-    });
-
+    })
+      .styles(_.arrowStyles);
 
     if (_.textReverseDirection) {
       g.append('path').attrs({
@@ -200,6 +204,8 @@ var Arrow = function(parent, opts, el){
         dx: _.textDx,
         dy: _.textDy
       })
+      .styles(_.textStyles);
+
     var textPath = label.append('textPath')
       .attrs({
         'xlink:href': _.textReverseDirection ? '#path_reverse_' + id : '#path_' + id,
@@ -321,6 +327,11 @@ var Arrow = function(parent, opts, el){
     _.d1 = v;
     return this;
   }
+  arrow.arrowStyles = function(v){
+    if (!arguments.length) return _.arrowStyles;
+    _.arrowStyles = v;
+    return this;
+  }
   arrow.text = function(v){
     if (!arguments.length) return _.text;
     _.text = v;
@@ -344,6 +355,11 @@ var Arrow = function(parent, opts, el){
   arrow.textDy = function(v){
     if (!arguments.length) return _.textDy;
     _.textDy = v;
+    return this;
+  }
+  arrow.textStyles = function(v){
+    if (!arguments.length) return _.textStyles;
+    _.textStyles = v;
     return this;
   }
 

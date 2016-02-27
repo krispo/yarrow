@@ -14,7 +14,10 @@
 }
 .yarrow .arrow.tip-1 {}
 .yarrow .arrow.tip-2 {}
-.yarrow .arrow.text {}
+.yarrow .arrow.text {
+  stroke: none;
+  fill:  #000;
+}
 
 @-webkit-keyframes yarrow-draw {
   to {

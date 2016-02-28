@@ -194,9 +194,10 @@ var Arrow = function(parent, opts, el){
 
     if (_.textReverseDirection) {
       g.append('path').attrs({
-        id: 'path_reverse_' + id,
-        d: (typeof _.d === 'function' ? _.d(_, utils) : _.d) + ' z'
-      });
+          id: 'path_reverse_' + id,
+          d: utils.inversePath(typeof _.d === 'function' ? _.d(_, utils) : _.d)
+        })
+        .style('display', 'none');
     }
     var label = g.append('text')
       .attrs({
@@ -209,7 +210,7 @@ var Arrow = function(parent, opts, el){
     var textPath = label.append('textPath')
       .attrs({
         'xlink:href': _.textReverseDirection ? '#path_reverse_' + id : '#path_' + id,
-        startOffset: _.textReverseDirection ? 2*l - _.textStartOffset : _.textStartOffset
+        startOffset: _.textReverseDirection ? l - _.textStartOffset : _.textStartOffset
       })
       .styles({
         opacity: 0

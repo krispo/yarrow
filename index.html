@@ -26,6 +26,7 @@
     <i class="material-icons">menu</i>
     <ul>
       <li><a href="#ex_basic">Basic Example</a></li>
+      <li><a href="#ex_сurve_path">Curve path</a></li>
       <li><a href="#ex_text_start_offset">Text start offset</a></li>
       <li><a href="#ex_text_xy_offset">Text XY offset</a></li>
       <li><a href="#ex_reverse_text_direction">Reverse text direction</a></li>
@@ -65,6 +66,25 @@ yarrow.arrow({
     </div>
   </div>
 
+  <div id="ex_сurve_path" class="example">
+    <h4>Curve path</h4>
+    <div class="ex_container">
+      <div id="ex_сurve_path_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  text: "I'm arrow!",
+  d: 'M0,140 Q0,0 200,0'
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
   <div id="ex_text_start_offset" class="example">
     <h4>Text start offset</h4>
     <div class="ex_container">
@@ -78,6 +98,7 @@ yarrow.arrow({
   dx: 200,
   dy: -140,
   text: "I'm arrow!",
+  d: 'M0,140 Q0,0 200,0',
   textStartOffset: 80
 }).render();</code></pre>
       </div>
@@ -97,6 +118,7 @@ yarrow.arrow({
   dx: 200,
   dy: -140,
   text: "I'm arrow!",
+  d: 'M0,140 Q0,0 200,0',
   textDx: 80,
   textDy: 20
 }).render();</code></pre>
@@ -117,6 +139,7 @@ yarrow.arrow({
   dx: 200,
   dy: -140,
   text: "I'm arrow!",
+  d: 'M0,140 Q0,0 200,0',
   textReverseDirection: true,
   textStartOffset: 70
 }).render();</code></pre>

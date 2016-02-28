@@ -71,6 +71,13 @@ hr {
   font-size:12px;
   color: #0070a7;
 }
+.ex_container .output .point {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border:2px solid #ff2005;
+  border-radius: 50%;
+}
 .ex_container .code { background-color: #f8f8f8; }
 .ex_container .code pre { margin: 0; }
 

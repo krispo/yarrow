@@ -16,7 +16,7 @@
   <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
   <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
   <script src="//rawgit.com/krispo/svg-path-utils/master/build/svg-path-utils.min.js"></script>
-  <script src="//rawgit.com/krispo/yarrow/master/build/yarrow.js"></script>
+  <script src="//rawgit.com/krispo/yarrow/master/build/yarrow.min.js"></script>
 </head>
 <body>
 <header>
@@ -26,6 +26,8 @@
     <i class="material-icons">menu</i>
     <ul>
       <li><a href="#ex_basic">Basic Example</a></li>
+      <li><a href="#ex_text_start_offset">Text start offset</a></li>
+      <li><a href="#ex_text_xy_offset">Text XY offset</a></li>
       <li><a href="#ex_reverse_text_direction">Reverse text direction</a></li>
       <li><a href="#ex_styles">Styles</a></li>
       <hr>
@@ -58,6 +60,45 @@ yarrow.arrow({
   dx: 200,
   dy: -140,
   text: "I'm arrow!"
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div id="ex_text_start_offset" class="example">
+    <h4>Text start offset</h4>
+    <div class="ex_container">
+      <div id="ex_text_start_offset_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  text: "I'm arrow!",
+  textStartOffset: 80
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div id="ex_text_xy_offset" class="example">
+    <h4>Text XY offset</h4>
+    <div class="ex_container">
+      <div id="ex_text_xy_offset_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  text: "I'm arrow!",
+  textDx: 80,
+  textDy: 20
 }).render();</code></pre>
       </div>
     </div>

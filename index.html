@@ -17,6 +17,7 @@
   <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
   <script src="//rawgit.com/krispo/svg-path-utils/master/build/svg-path-utils.min.js"></script>
   <script src="//rawgit.com/krispo/yarrow/master/build/yarrow.min.js"></script>
+  <!--<script src="examples/yarrow_test.js"></script>-->
 </head>
 <body>
 <header>
@@ -30,6 +31,7 @@
       <li><a href="#ex_text_start_offset">Text start offset</a></li>
       <li><a href="#ex_text_xy_offset">Text XY offset</a></li>
       <li><a href="#ex_reverse_text_direction">Reverse text direction</a></li>
+      <li><a href="#ex_text_html">Text HTML</a></li>
       <li><a href="#ex_styles">Styles</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
@@ -142,6 +144,26 @@ yarrow.arrow({
   d: 'M0,140 Q0,0 200,0',
   textReverseDirection: true,
   textStartOffset: 70
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div id="ex_text_html" class="example">
+    <h4>Text HTML</h4>
+    <div class="ex_container">
+      <div id="ex_text_html_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  d: 'M0,140 Q0,0 200,0',
+  textStartOffset: 80,
+  text: 'I\'m &lt;tspan font-size="25" font-weight="bold" fill="red" &gt;also&lt;/tspan&gt; arrow!'
 }).render();</code></pre>
       </div>
     </div>

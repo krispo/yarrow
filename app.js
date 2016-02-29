@@ -5,6 +5,7 @@ var ex = [
   'ex_text_start_offset',
   'ex_text_xy_offset',
   'ex_reverse_text_direction',
+  'ex_text_html',
   'ex_styles'
 ];
 document.addEventListener('DOMContentLoaded', function main() {
@@ -146,6 +147,21 @@ function ex_reverse_text_direction(el){
       d: 'M0,140 Q0,0 200,0',
       textReverseDirection: true,
       textStartOffset: 70
+    }, el)
+    .render();
+}
+
+function ex_text_html(el){
+  el.innerHTML = '';
+  var ya = new yarrow.Yarrow();
+  ya.arrow({
+      x: 100,
+      y: 220,
+      dx: 200,
+      dy: -140,
+      d: 'M0,140 Q0,0 200,0',
+      textStartOffset: 80,
+      text: 'I\'m <tspan font-size="25" font-weight="bold" fill="red" >also</tspan> arrow!'
     }, el)
     .render();
 }

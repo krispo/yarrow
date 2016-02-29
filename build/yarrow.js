@@ -216,7 +216,7 @@
         .styles({
           opacity: 0
         })
-        .text(_.text);
+        .html(_.text);
 
       setTimeout(function(){
         textPath.styles({

@@ -59,6 +59,7 @@ var Arrow = function(parent, opts, el){
 
   // define options
   _ = {
+    animation: typeof opts.animation === 'undefined'?true:opts.animation,
     x: opts.x || 0,
     y: opts.y || 0,
     dx: opts.dx || 100,
@@ -151,12 +152,14 @@ var Arrow = function(parent, opts, el){
     }
     alpha = utils.angle(p0,p);
 
-    path.styles({
-      'animation-duration': _.duration/1000 + 's',
-      'animation-delay': _.delay/1000 + 's',
-      'stroke-dasharray': l + ' ' + l,
-      'stroke-dashoffset': l
-    });
+    if (_.animation) {
+      path.styles({
+        'animation-duration': _.duration / 1000 + 's',
+        'animation-delay': _.delay / 1000 + 's',
+        'stroke-dasharray': l + ' ' + l,
+        'stroke-dashoffset': l
+      });
+    }
 
     var tip1 = g.append('path')
       .attrs({
@@ -166,14 +169,17 @@ var Arrow = function(parent, opts, el){
         d: typeof _.d1 === 'function' ? _.d1(_, utils) : _.d1,
         transform: 'translate(' + p.x + ',' + p.y + ')rotate(' + alpha + ')'
       });
-    var l1 = isSVG ? tip1.node().getTotalLength() : 0;
-    tip1.styles({
-      'animation-duration': _.duration1/1000 + 's',
-      'animation-delay': _.delay1/1000 + 's',
-      'stroke-dasharray': l1 + ' ' + l1,
-      'stroke-dashoffset': l1
-    })
-      .styles(_.arrowStyles);
+
+    if (_.animation) {
+      var l1 = isSVG ? tip1.node().getTotalLength() : 0;
+      tip1.styles({
+        'animation-duration': _.duration1 / 1000 + 's',
+        'animation-delay': _.delay1 / 1000 + 's',
+        'stroke-dasharray': l1 + ' ' + l1,
+        'stroke-dashoffset': l1
+      })
+    }
+    tip1.styles(_.arrowStyles);
 
     var tip2 = g.append('path')
       .attrs({
@@ -183,14 +189,17 @@ var Arrow = function(parent, opts, el){
         d: typeof _.d2 === 'function' ? _.d2(_, utils) : _.d2,
         transform: 'translate(' + p.x + ',' + p.y + ')rotate(' + alpha + ')'
       });
-    var l2 = isSVG ? tip2.node().getTotalLength() : 0;
-    tip2.styles({
-      'animation-duration': _.duration2/1000 + 's',
-      'animation-delay': _.delay2/1000 + 's',
-      'stroke-dasharray': l2 + ' ' + l2,
-      'stroke-dashoffset': l2
-    })
-      .styles(_.arrowStyles);
+
+    if (_.animation) {
+      var l2 = isSVG ? tip2.node().getTotalLength() : 0;
+      tip2.styles({
+        'animation-duration': _.duration2 / 1000 + 's',
+        'animation-delay': _.delay2 / 1000 + 's',
+        'stroke-dasharray': l2 + ' ' + l2,
+        'stroke-dashoffset': l2
+      })
+    }
+    tip2.styles(_.arrowStyles);
 
     if (_.textReverseDirection) {
       g.append('path').attrs({
@@ -212,17 +221,20 @@ var Arrow = function(parent, opts, el){
         'xlink:href': _.textReverseDirection ? '#path_reverse_' + id : '#path_' + id,
         startOffset: _.textReverseDirection ? l - _.textStartOffset : _.textStartOffset
       })
-      .styles({
-        opacity: 0
-      })
       .html(_.text);
 
-    setTimeout(function(){
+    if (_.animation) {
       textPath.styles({
-        transition: 'all ' + (_.duration/1000) + 's linear',
-        opacity: 1
-      })
-    },10)
+        opacity: 0
+      });
+
+      setTimeout(function () {
+        textPath.styles({
+          transition: 'all ' + (_.duration / 1000) + 's linear',
+          opacity: 1
+        })
+      }, 10)
+    }
 
     return this;
   }

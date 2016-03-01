@@ -7,7 +7,8 @@ var ex = [
   'ex_reverse_text_direction',
   'ex_text_html',
   'ex_styles',
-  'ex_durations'
+  'ex_durations',
+  'ex_animation_off'
 ];
 document.addEventListener('DOMContentLoaded', function main() {
   hljs.initHighlightingOnLoad();
@@ -201,6 +202,20 @@ function ex_durations(el){
       duration1: 500,
       delay2: 2000 + 500,
       duration2: 500
+    }, el)
+    .render();
+}
+
+function ex_animation_off(el){
+  el.innerHTML = '';
+  var ya = new yarrow.Yarrow();
+  ya.arrow({
+      x: 100,
+      y: 220,
+      dx: 200,
+      dy: -140,
+      text: "I'm arrow",
+      animation: false
     }, el)
     .render();
 }

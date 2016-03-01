@@ -34,6 +34,7 @@
       <li><a href="#ex_text_html">Text HTML</a></li>
       <li><a href="#ex_styles">Styles</a></li>
       <li><a href="#ex_durations">Durations</a></li>
+      <li><a href="#ex_animation_off">Animation off</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
       <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
@@ -226,6 +227,26 @@ yarrow.arrow({
       </div>
     </div>
   </div>
+
+  <div id="ex_animation_off" class="example">
+    <h4>Animation off</h4>
+    <div class="ex_container">
+      <div id="ex_animation_off_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  text: "I'm arrow",
+  animation: false
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <hr>

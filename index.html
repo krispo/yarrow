@@ -33,6 +33,7 @@
       <li><a href="#ex_reverse_text_direction">Reverse text direction</a></li>
       <li><a href="#ex_text_html">Text HTML</a></li>
       <li><a href="#ex_styles">Styles</a></li>
+      <li><a href="#ex_durations">Durations</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
       <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
@@ -205,6 +206,26 @@ yarrow.arrow({
 
   </div>
 
+  <div id="ex_durations" class="example">
+    <h4>Durations</h4>
+    <div class="ex_container">
+      <div id="ex_durations_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x: 100,
+  y: 220,
+  dx: 200,
+  dy: -140,
+  duration: 2000,     // arrow duration
+  duration1: 500,     // tip1 duration
+  delay2: 2000 + 500, // tip2 delay
+  duration2: 500      // tip2 duration
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
 </section>
 
 <hr>

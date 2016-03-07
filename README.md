@@ -29,10 +29,10 @@ var yarrow = new Yarrow();
 
 // add new arrow
 var arrow = yarrow.arrow({
-  x: 0,                 // init x coords on the page
-  y: 0,                 // init y coords on the page
-  dx: 100,              // x target offset
-  dy: 100,              // y target offset
+  x1: 0,                // source x coordinate
+  y1: 0,                // source y coordinate
+  x2: 100,              // target x coordinate
+  y2: 100,              // target y coordinate
   text: "I'm arrow!"    // arrow label    
 });
 
@@ -81,10 +81,10 @@ Dispose the current arrow with specified *duration*, and after specified *delay*
 ### *opts*
 Available arrow options:
 
-* **x** --- x page coordinate 
-* **y** --- y page coordinate
-* **dx** --- x target offset
-* **dy** --- y target offset
+* **x1** --- source x coordinate
+* **y1** --- source y coordinate
+* **x2** --- target x coordinate
+* **y2** --- target y coordinate
     
 * **duration** --- render duration for the arrow curve
 * **delay** --- delay before start rendering for the arrow curve

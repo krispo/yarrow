@@ -64,7 +64,7 @@
       animation: typeof opts.animation === 'undefined'?true:opts.animation,
       x1: opts.x1 || 0,
       y1: opts.y1 || 0,
-      x2: opts.x2 || 100,
+      x2: opts.x2 || 0,
       y2: opts.y2 || 0,
       d: opts.d || function(_, u){
         return  u.join(
@@ -104,6 +104,12 @@
     // calculate extra options for text
     _.textReverseDirection = (typeof opts.textReverseDirection === 'function' ? opts.textReverseDirection(_, utils) : opts.textReverseDirection) || false;
     _.textStartOffset= (typeof opts.textStartOffset === 'function' ? opts.textStartOffset(_, utils) : opts.textStartOffset) || 0;
+
+    // set x1, y1, x2, y2 if functions
+    if (typeof opts.x1 === 'function') _.x1 = opts.x1(_);
+    if (typeof opts.y1 === 'function') _.y1 = opts.y1(_);
+    if (typeof opts.x2 === 'function') _.x2 = opts.x2(_);
+    if (typeof opts.y2 === 'function') _.y2 = opts.y2(_);
 
     // utils
     function defineElement(element, rootElement){

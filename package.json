@@ -15,7 +15,7 @@
   "jsnext:main": "index",
   "scripts": {
     "uglify": "uglifyjs build/yarrow.js -c -m -o build/yarrow.min.js",
-    "build": "mkdir -p build && VERSION=`node -e 'console.log(require(\"./package.json\").version)'` && rollup -f umd --banner \"/* Yarrow, v${VERSION} */\" -g d3-selection:d3_selection,svg-path-utils:svg_path_utils -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
+    "build": "mkdir -p build && VERSION=`node -e 'console.log(require(\"./package.json\").version)'` DATE=`node -e 'console.log(new Date().toJSON().slice(0,10))'` && rollup -f umd --banner \"/* Yarrow, v${VERSION}, ${DATE}, MIT (https://github.com/krispo/yarrow) */\" -g d3-selection:d3_selection,svg-path-utils:svg_path_utils -n yarrow -o build/yarrow.js -- index.js && cp src/css/yarrow.css build/yarrow.css && npm run uglify",
     "pretest": "npm run build",
     "test": "faucet test/*-test.js",
     "prepublish": "npm run build"

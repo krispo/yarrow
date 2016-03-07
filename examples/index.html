@@ -31,12 +31,13 @@
           , x2 = rect.left + 8
           , y2 = rect.top + 8
           ;
-      yar
+      var ar = yar
           .arrow({
             x1: x1,
             y1: y1,
             x2: x2,
             y2: y2,
+            target: '#goal',
             text: 'Hello World!',
             textReverseDirection: function(_, u){
               return (_.x2- _.x1) < 0;

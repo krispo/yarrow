@@ -82,6 +82,16 @@ var Arrow = function(parent, opts, el){
     textDy: opts.textDy || -5,
     textStyles: opts.textStyles || {}
   };
+
+  // define source and target if exist
+  var node;
+  if (opts.source && (node = d3s.select(opts.source).node())) {
+    _.source = defineElement(node, el);
+  }
+  if (opts.target && (node = d3s.select(opts.target).node())) {
+    _.target = defineElement(node, el);
+  }
+
   // calculate duration and delay options for path
   _.duration = opts.duration || 300;
   _.delay = opts.delay || 0;
@@ -93,6 +103,34 @@ var Arrow = function(parent, opts, el){
   _.textReverseDirection = (typeof opts.textReverseDirection === 'function' ? opts.textReverseDirection(_, utils) : opts.textReverseDirection) || false;
   _.textStartOffset= (typeof opts.textStartOffset === 'function' ? opts.textStartOffset(_, utils) : opts.textStartOffset) || 0;
 
+  // utils
+  function defineElement(element, rootElement){
+    var rect = element.getBoundingClientRect()
+      , w = rect.right - rect.left
+      , h = rect.bottom - rect.top
+      , offset = getOffset(element)
+      , rootOffset = getOffset(rootElement)
+    ;
+    return {
+      element: element,
+      top: offset.top - rootOffset.top,
+      left: offset.left - rootOffset.left,
+      width: w,
+      height: h
+    };
+
+    function getOffset(el){
+      var x = 0, y = 0;
+      while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
+        x += el.offsetLeft - el.scrollLeft;
+        y += el.offsetTop - el.scrollTop;
+        el = el.offsetParent;
+      }
+      return { top: x, left: y };
+    }
+  }
+
+  // arrow methods
   arrow.id = id;
 
   arrow.render = function(){

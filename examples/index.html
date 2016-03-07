@@ -26,20 +26,20 @@
       var el = document.getElementById('goal');
       var rect = el.getBoundingClientRect();
 
-      var x = cursorX
-          , y = cursorY
-          , dx = rect.left + 8 - x
-          , dy = rect.top + 8 - y
+      var x1 = cursorX
+          , y1 = cursorY
+          , x2 = rect.left + 8
+          , y2 = rect.top + 8
           ;
       yar
           .arrow({
-            x: x,
-            y: y,
-            dx: dx,
-            dy: dy,
+            x1: x1,
+            y1: y1,
+            x2: x2,
+            y2: y2,
             text: 'Hello World!',
             textReverseDirection: function(_, u){
-              return _.dx < 0;
+              return (_.x2- _.x1) < 0;
             },
             textStartOffset: function(_, u){
               return _.textReverseDirection ? 95 : 10

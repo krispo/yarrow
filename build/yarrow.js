@@ -62,14 +62,14 @@
     // define options
     _ = {
       animation: typeof opts.animation === 'undefined'?true:opts.animation,
-      x: opts.x || 0,
-      y: opts.y || 0,
-      dx: opts.dx || 100,
-      dy: opts.dy || 0,
+      x1: opts.x1 || 0,
+      y1: opts.y1 || 0,
+      x2: opts.x2 || 100,
+      y2: opts.y2 || 0,
       d: opts.d || function(_, u){
         return  u.join(
-          u.M(_.dx > 0 ? 0 : Math.abs(_.dx), _.dy > 0 ? 0 : Math.abs(_.dy)),
-          u.L(_.dx > 0 ? _.dx : 0, _.dy > 0 ? _.dy :0)
+          u.M((_.x2-_.x1) > 0 ? 0 : Math.abs((_.x2-_.x1)), (_.y2-_.y1) > 0 ? 0 : Math.abs(_.y2-_.y1)),
+          u.L((_.x2-_.x1) > 0 ? (_.x2-_.x1) : 0, (_.y2-_.y1) > 0 ? (_.y2-_.y1) :0)
         );
       },
       d1: opts.d1 || function(_, u){
@@ -99,10 +99,10 @@
 
     arrow.render = function(){
       var margin = { top: 20, right: 20, bottom: 20, left: 20}
-        , width = Math.abs(_.dx)
-        , height = Math.abs(_.dy)
-        , top = Math.min(_.y, _.y + _.dy) - margin.top
-        , left = Math.min(_.x, _.x + _.dx) - margin.left
+        , width = Math.abs(_.x2-_.x1)
+        , height = Math.abs(_.y2-_.y1)
+        , top = Math.min(_.y1, _.y2) - margin.top
+        , left = Math.min(_.x1, _.x2) - margin.left
         , outerWidth = width + margin.left + margin.right
         , outerHeight = height + margin.top + margin.bottom
         , svg
@@ -277,24 +277,24 @@
     }
 
     // get/set specific options
-    arrow.x = function(v){
-      if (!arguments.length) return _.x;
-      _.x = v;
+    arrow.x1 = function(v){
+      if (!arguments.length) return _.x1;
+      _.x1 = v;
       return this;
     }
-    arrow.y = function(v){
-      if (!arguments.length) return _.y;
-      _.y = v;
+    arrow.y1 = function(v){
+      if (!arguments.length) return _.y1;
+      _.y1 = v;
       return this;
     }
-    arrow.dx = function(v){
-      if (!arguments.length) return _.dx;
-      _.dx = v;
+    arrow.x2 = function(v){
+      if (!arguments.length) return _.x2;
+      _.x2 = v;
       return this;
     }
-    arrow.dy = function(v){
-      if (!arguments.length) return _.dy;
-      _.dy = v;
+    arrow.y2 = function(v){
+      if (!arguments.length) return _.y2;
+      _.y2 = v;
       return this;
     }
     arrow.duration = function(v){

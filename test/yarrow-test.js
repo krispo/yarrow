@@ -62,10 +62,10 @@ test('Yarrow tests', function(t){
 
 test('Yarrow tests with options', function(t){
   var opts = {
-    x: 0,
-    y: 0,
-    dx: 100,
-    dy: 100,
+    x1: 0,
+    y1: 0,
+    x2: 100,
+    y2: 100,
     duration: 1000,
     delay: 500,
     d: 'M0,0 L100,100',
@@ -87,10 +87,10 @@ test('Yarrow tests with options', function(t){
     var ya = new yarrow.Yarrow();
 
     var a = ya.arrow(opts, document.body);
-    t.equal(a.x(), 0);
-    t.equal(a.y(), 0);
-    t.equal(a.dx(), 100);
-    t.equal(a.dy(), 100);
+    t.equal(a.x1(), 0);
+    t.equal(a.y1(), 0);
+    t.equal(a.x2(), 100);
+    t.equal(a.y2(), 100);
     t.equal(a.duration(), 1000);
     t.equal(a.delay(), 500);
     t.equal(a.d(), 'M0,0 L100,100');
@@ -179,10 +179,10 @@ test('Arrow tests', function(t){
 
 test('Arrow tests with options', function(t){
   var opts = {
-    x: 0,
-    y: 0,
-    dx: 100,
-    dy: 100,
+    x1: 0,
+    y1: 0,
+    x2: 100,
+    y2: 100,
     duration: 1000,
     delay: 500,
     d: 'M0,0 L100,100',
@@ -205,10 +205,10 @@ test('Arrow tests with options', function(t){
     var a = ya.arrow(opts, document.body);
 
     var _ = a.options();
-    t.equal(_.x, 0);
-    t.equal(_.y, 0);
-    t.equal(_.dx, 100);
-    t.equal(_.dy, 100);
+    t.equal(_.x1, 0);
+    t.equal(_.y1, 0);
+    t.equal(_.x2, 100);
+    t.equal(_.y2, 100);
     t.equal(_.d, 'M0,0 L100,100');
     t.end();
   });
@@ -218,17 +218,17 @@ test('Arrow tests with options', function(t){
     var ya = new yarrow.Yarrow();
     var a = ya.arrow(opts, document.body);
     var some_opts = {
-      x: 20,
-      y: 30,
-      dx: 200,
-      dy: 300,
+      x1: 20,
+      y1: 30,
+      x2: 220,
+      y2: 330,
       d: 'M10,30 C100,100 50,50 0,0'
     }
     a.options(some_opts);
-    t.equal(a.x(), 20);
-    t.equal(a.y(), 30);
-    t.equal(a.dx(), 200);
-    t.equal(a.dy(), 300);
+    t.equal(a.x1(), 20);
+    t.equal(a.y1(), 30);
+    t.equal(a.x2(), 220);
+    t.equal(a.y2(), 330);
     t.equal(a.d(), 'M10,30 C100,100 50,50 0,0');
     t.equal(a.duration(), 1000);
     t.equal(a.d1(), 'M0,0 L20,20');
@@ -240,15 +240,15 @@ test('Arrow tests with options', function(t){
     var ya = new yarrow.Yarrow();
     var a = ya.arrow(opts, document.body);
     var some_opts = {
-      x: 20,
-      y: 30,
+      x1: 20,
+      y1: 30,
       dxqwe: 200
     }
     a.options(some_opts);
     var _ = a.options();
-    t.equal(a.x(), 20);
-    t.equal(a.y(), 30);
-    t.equal(a.dx(), 100);
+    t.equal(a.x1(), 20);
+    t.equal(a.y1(), 30);
+    t.equal(a.x2(), 100);
     t.equal(_.dxqwe, undefined);
     t.end();
   });

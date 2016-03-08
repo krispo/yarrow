@@ -16,7 +16,7 @@
   <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
   <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
   <script src="//rawgit.com/krispo/svg-path-utils/master/build/svg-path-utils.min.js"></script>
-  <script src="//rawgit.com/krispo/yarrow/v1.0.5/build/yarrow.min.js"></script>
+  <script src="//rawgit.com/krispo/yarrow/v1.0.6/build/yarrow.min.js"></script>
   <!--<script src="examples/yarrow_test.js"></script>-->
 </head>
 <body>
@@ -60,10 +60,10 @@
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow!"
 }).render();</code></pre>
       </div>
@@ -78,10 +78,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow!",
   d: 'M0,140 Q0,0 200,0'
 }).render();</code></pre>
@@ -97,10 +97,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow!",
   d: 'M0,140 Q0,0 200,0',
   textStartOffset: 80
@@ -117,10 +117,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow!",
   d: 'M0,140 Q0,0 200,0',
   textDx: 80,
@@ -138,10 +138,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow!",
   d: 'M0,140 Q0,0 200,0',
   textReverseDirection: true,
@@ -159,10 +159,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   d: 'M0,140 Q0,0 200,0',
   textStartOffset: 80,
   text: 'I\'m &lt;tspan font-size="25" font-weight="bold" fill="red" &gt;also&lt;/tspan&gt; arrow!'
@@ -179,10 +179,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow!",
   arrowStyles: {
     'stroke': '#ff5a00',
@@ -215,10 +215,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   duration: 2000,     // arrow duration
   duration1: 500,     // tip1 duration
   delay2: 2000 + 500, // tip2 delay
@@ -236,10 +236,10 @@ yarrow.arrow({
           <pre><code class="javascript">var yarrow = new Yarrow();
 
 yarrow.arrow({
-  x: 100,
-  y: 220,
-  dx: 200,
-  dy: -140,
+  x1: 100,
+  y1: 220,
+  x2: 300,
+  y2: 80,
   text: "I'm arrow",
   animation: false
 }).render();</code></pre>

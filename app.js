@@ -30,10 +30,10 @@ function ex_basic(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow!"
     }, el)
     .render();
@@ -48,8 +48,8 @@ function ex_basic(el){
   s.innerHTML = '(100, 220)';
   var t = document.createElement('div');
   t.setAttribute('class', 'coords');
-  t.setAttribute('style', 'top:60px;left:242px;');
-  t.innerHTML = '(100 + 200, 220 - 140)';
+  t.setAttribute('style', 'top:60px;left:275px;');
+  t.innerHTML = '(300, 80)';
   el.appendChild(z);
   el.appendChild(s);
   el.appendChild(t);
@@ -59,10 +59,10 @@ function ex_сurve_path(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow!",
       d: 'M0,140 Q0,0 200,0'
     }, el)
@@ -110,10 +110,10 @@ function ex_text_start_offset(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow!",
       d: 'M0,140 Q0,0 200,0',
       textStartOffset: 80
@@ -125,10 +125,10 @@ function ex_text_xy_offset(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow!",
       d: 'M0,140 Q0,0 200,0',
       textDx: 80,
@@ -141,10 +141,10 @@ function ex_reverse_text_direction(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow!",
       d: 'M0,140 Q0,0 200,0',
       textReverseDirection: true,
@@ -157,10 +157,10 @@ function ex_text_html(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       d: 'M0,140 Q0,0 200,0',
       textStartOffset: 80,
       text: 'I\'m <tspan font-size="25" font-weight="bold" fill="red" >also</tspan> arrow!'
@@ -172,10 +172,10 @@ function ex_styles(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow!",
       arrowStyles: {
         'stroke-width': 6,
@@ -194,10 +194,10 @@ function ex_durations(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       duration: 2000,
       duration1: 500,
       delay2: 2000 + 500,
@@ -210,10 +210,10 @@ function ex_animation_off(el){
   el.innerHTML = '';
   var ya = new yarrow.Yarrow();
   ya.arrow({
-      x: 100,
-      y: 220,
-      dx: 200,
-      dy: -140,
+      x1: 100,
+      y1: 220,
+      x2: 300,
+      y2: 80,
       text: "I'm arrow",
       animation: false
     }, el)

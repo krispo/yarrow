@@ -20,23 +20,15 @@
     });
 
     function printMousePos(e) {
-      var cursorX = e.pageX;
-      var cursorY = e.pageY;
+      var x1 = e.pageX;
+      var y1 = e.pageY;
 
-      var el = document.getElementById('goal');
-      var rect = el.getBoundingClientRect();
-
-      var x1 = cursorX
-          , y1 = cursorY
-          , x2 = rect.left + 8
-          , y2 = rect.top + 8
-          ;
       var ar = yar
           .arrow({
             x1: x1,
             y1: y1,
-            x2: x2,
-            y2: y2,
+            x2: function(_){ return _.target.left + 8; },
+            y2: function(_){ return _.target.top + 8; },
             target: '#goal',
             text: 'Hello World!',
             textReverseDirection: function(_, u){

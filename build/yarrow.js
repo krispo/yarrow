@@ -1,4 +1,4 @@
-/* Yarrow, v1.0.5 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-07 */
+/* Yarrow, v1.0.5 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-08 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-selection'), require('svg-path-utils')) :
   typeof define === 'function' && define.amd ? define(['exports', 'd3-selection', 'svg-path-utils'], factory) :
@@ -94,6 +94,12 @@
       _.target = defineElement(node, el);
     }
 
+    // set x1, y1, x2, y2 if functions
+    if (typeof opts.x1 === 'function') _.x1 = opts.x1(_);
+    if (typeof opts.y1 === 'function') _.y1 = opts.y1(_);
+    if (typeof opts.x2 === 'function') _.x2 = opts.x2(_);
+    if (typeof opts.y2 === 'function') _.y2 = opts.y2(_);
+
     // calculate duration and delay options for path
     _.duration = opts.duration || 300;
     _.delay = opts.delay || 0;
@@ -104,12 +110,6 @@
     // calculate extra options for text
     _.textReverseDirection = (typeof opts.textReverseDirection === 'function' ? opts.textReverseDirection(_, utils) : opts.textReverseDirection) || false;
     _.textStartOffset= (typeof opts.textStartOffset === 'function' ? opts.textStartOffset(_, utils) : opts.textStartOffset) || 0;
-
-    // set x1, y1, x2, y2 if functions
-    if (typeof opts.x1 === 'function') _.x1 = opts.x1(_);
-    if (typeof opts.y1 === 'function') _.y1 = opts.y1(_);
-    if (typeof opts.x2 === 'function') _.x2 = opts.x2(_);
-    if (typeof opts.y2 === 'function') _.y2 = opts.y2(_);
 
     // utils
     function defineElement(element, rootElement){
@@ -134,7 +134,7 @@
           y += el.offsetTop - el.scrollTop;
           el = el.offsetParent;
         }
-        return { top: x, left: y };
+        return { top: y, left: x };
       }
     }
 

@@ -27,9 +27,9 @@
   },
   "devDependencies": {
     "faucet": "0.0.1",
-    "jsdom": "^8.0.2",
+    "jsdom": "^8.1",
     "rollup": "^0.25.4",
-    "tape": "^4.4.0",
+    "tape": "^4.5",
     "uglify-js": "^2.6.1"
   },
   "dependencies": {

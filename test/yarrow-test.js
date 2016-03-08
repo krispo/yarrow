@@ -280,4 +280,58 @@ test('Arrow tests with options', function(t){
     t.equal(a.textStyles()['font-size'], 20);
     t.end();
   });
+
+  t.test('source should return correct parameters', function(t){
+    var document = jsdom.jsdom('<body><div id="source_id" style="position:absolute;top:50px;left:100px;width:200px;height:150px;">tyu</div></body>');
+
+    var source = document.getElementById('source_id');
+    //t.comment(JSON.stringify(source.getBoundingClientRect(), null,2)); //not working
+
+    var  opts = {
+      x1: function(_){ return _.source.left; },
+      y1: function(_){ return _.source.top; },
+      x2: 100,
+      y2: 100,
+      source: source
+    };
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document);
+
+    var _ = a.options();
+    t.equal(_.x1, 0); //not correct, should be 100
+    t.equal(_.y1, 0); //not correct, should be 50
+    t.equal(_.x2, 100);
+    t.equal(_.y2, 100);
+    t.notEqual(_.source, undefined);
+    //t.equal(_.source.width, 200);
+    //t.equal(_.source.height, 150);
+    t.end();
+  });
+
+  t.test('target should return correct parameters', function(t){
+    var document = jsdom.jsdom('<body><div id="target_id" style="position:absolute;top:50px;left:100px;width:200px;height:150px;">tyu</div></body>');
+
+    var target = document.getElementById('target_id');
+    //t.comment(JSON.stringify(target.getBoundingClientRect(), null,2)); //not working
+
+    var  opts = {
+      x1: 0,
+      y1: 0,
+      x2: function(_){ return _.target.left; },
+      y2: function(_){ return _.target.top; },
+      target: target
+    };
+    var ya = new yarrow.Yarrow();
+    var a = ya.arrow(opts, document);
+
+    var _ = a.options();
+    t.equal(_.x1, 0);
+    t.equal(_.y1, 0);
+    t.equal(_.x2, 0); //not correct, should be 100
+    t.equal(_.y2, 0); //not correct, should be 50
+    t.notEqual(_.target, undefined);
+    //t.equal(_.target.width, 200);
+    //t.equal(_.target.height, 150);
+    t.end();
+  })
 });

@@ -9,7 +9,8 @@ var ex = [
   'ex_styles',
   'ex_durations',
   'ex_animation_off',
-  'ex_source_element'
+  'ex_source_element',
+  'ex_target_element'
 ];
 document.addEventListener('DOMContentLoaded', function main() {
   hljs.initHighlightingOnLoad();
@@ -255,4 +256,28 @@ function ex_source_element(el){
   height.setAttribute('style', 'top:230px;left:172px;');
   height.innerHTML = 'height';
   el.appendChild(height);
+}
+
+function ex_target_element(el){
+  el.innerHTML = '<div id="ex_target_element_target_id" style="position:absolute;border:1px solid red;top:30px;left:250px;padding:10px;padding-top:6px;">source</div>';
+  var ya = new yarrow.Yarrow();
+  ya.arrow({
+      x1: 100,
+      y1: 220,
+      x2: function(_){ return _.target.left + _.target.width/2; },
+      y2: function(_){ return _.target.top + _.target.height; },
+      target: "#ex_target_element_target_id",
+      text: "I'm arrow"
+    }, el)
+    .render();
+
+  var z = document.createElement('div');
+  z.setAttribute('class', 'coords');
+  z.setAttribute('style', 'top:13px;left:228px;');
+  z.innerHTML = '(top, left)';
+  var z_point = document.createElement('div');
+  z_point.setAttribute('class', 'point');
+  z_point.setAttribute('style', 'top:28px;left:248px;background-color:black;');
+  el.appendChild(z);
+  el.appendChild(z_point);
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Yarrow - svg-based animated pointer</title>
 
-  <link href="//rawgit.com/krispo/yarrow/master/build/yarrow.css" rel="stylesheet" type="text/css"/>
+  <link href="node_modules/yarrow/build/yarrow.css" rel="stylesheet" type="text/css"/>
   <link href="style.css" rel="stylesheet" type="text/css"/>
   <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,10 +13,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/languages/javascript.min.js"></script>
 
-  <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
-  <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
-  <script src="//rawgit.com/krispo/svg-path-utils/master/build/svg-path-utils.min.js"></script>
-  <script src="//rawgit.com/krispo/yarrow/v1.0.6/build/yarrow.min.js"></script>
+  <script src="node_modules/d3-selection/build/d3-selection.min.js"></script>
+  <script src="node_modules/d3-selection-multi/build/d3-selection-multi.min.js"></script>
+  <script src="node_modules/svg-path-utils/build/svg-path-utils.min.js"></script>
+  <script src="node_modules/yarrow/build/yarrow.min.js"></script>
   <!--<script src="examples/yarrow_test.js"></script>-->
 </head>
 <body>
@@ -35,6 +35,7 @@
       <li><a href="#ex_styles">Styles</a></li>
       <li><a href="#ex_durations">Durations</a></li>
       <li><a href="#ex_animation_off">Animation off</a></li>
+      <li><a href="#ex_source_element">Source element</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
       <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
@@ -242,6 +243,27 @@ yarrow.arrow({
   y2: 80,
   text: "I'm arrow",
   animation: false
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <div id="ex_source_element" class="example">
+    <h4>Source element</h4>
+    <div class="ex_container">
+      <div id="ex_source_element_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x1: function(_){
+    return _.source.left + _.source.width/2;
+  },
+  y1: function(_){ return _.source.top; },
+  x2: 300,
+  y2: 80,
+  source: "#source_id"
+  text: "I'm arrow"
 }).render();</code></pre>
       </div>
     </div>

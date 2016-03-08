@@ -1,0 +1,1 @@
+export {default as SVGPathUtils} from './src/svg-path-utils';

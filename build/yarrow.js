@@ -95,10 +95,7 @@
     }
 
     // set x1, y1, x2, y2 if functions
-    if (typeof opts.x1 === 'function') _.x1 = opts.x1(_);
-    if (typeof opts.y1 === 'function') _.y1 = opts.y1(_);
-    if (typeof opts.x2 === 'function') _.x2 = opts.x2(_);
-    if (typeof opts.y2 === 'function') _.y2 = opts.y2(_);
+    setCoords();
 
     // calculate duration and delay options for path
     _.duration = opts.duration || 300;
@@ -136,6 +133,13 @@
         }
         return { top: y, left: x };
       }
+    }
+
+    function setCoords(){
+      if (typeof opts.x1 === 'function') _.x1 = opts.x1(_);
+      if (typeof opts.y1 === 'function') _.y1 = opts.y1(_);
+      if (typeof opts.x2 === 'function') _.x2 = opts.x2(_);
+      if (typeof opts.y2 === 'function') _.y2 = opts.y2(_);
     }
 
     // arrow methods
@@ -339,6 +343,18 @@
     arrow.y2 = function(v){
       if (!arguments.length) return _.y2;
       _.y2 = v;
+      return this;
+    }
+    arrow.source = function(v){
+      if (!arguments.length) return _.source;
+      _.source = v;
+      setCoords();
+      return this;
+    }
+    arrow.target = function(v){
+      if (!arguments.length) return _.target;
+      _.target = v;
+      setCoords();
       return this;
     }
     arrow.duration = function(v){

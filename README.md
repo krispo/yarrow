@@ -86,8 +86,8 @@ Available arrow options:
 * **x2** --- target x coordinate
 * **y2** --- target y coordinate
 
-* **source** --- selector or node element for source point. Eg, `source: '#source_id'`.  
-* **target** --- selector or node element for target point. Eg, `target: '#target_id'`.
+* **source** --- selector or node element for source point. Eg, `source: '#source_id'`. After rendering it's converted into object with props: `element`, `top`, `left`, `width`, `height`.  
+* **target** --- selector or node element for target point. Eg, `target: '#target_id'`. After rendering it's converted into object with props: `element`, `top`, `left`, `width`, `height`.
     
 * **duration** --- render duration for the arrow curve
 * **delay** --- delay before start rendering for the arrow curve

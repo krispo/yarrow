@@ -333,5 +333,5 @@ test('Arrow tests with options', function(t){
     //t.equal(_.target.width, 200);
     //t.equal(_.target.height, 150);
     t.end();
-  })
+  });
 });

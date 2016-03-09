@@ -83,6 +83,7 @@
       textDx: opts.textDx || 0,
       textDy: opts.textDy || -5,
       textStyles: opts.textStyles || {},
+      margin: Object.assign({}, {top: 20, right:20, bottom: 20, left: 20}, opts.margin),
       get dx(){ return this.x2 - this.x1; },
       get dy(){ return this.y2 - this.y1; },
       get w(){ return Math.abs(this.dx); },
@@ -150,7 +151,7 @@
     arrow.id = id;
 
     arrow.render = function(){
-      var margin = { top: 20, right: 20, bottom: 20, left: 20}
+      var margin = _.margin
         , width = _.w
         , height = _.h
         , top = Math.min(_.y1, _.y2) - margin.top
@@ -439,6 +440,11 @@
     arrow.textStyles = function(v){
       if (!arguments.length) return _.textStyles;
       _.textStyles = v;
+      return this;
+    }
+    arrow.margin = function(v){
+      if (!arguments.length) return _.margin;
+      _.margin = Object.assign({}, _.margin, v);
       return this;
     }
 

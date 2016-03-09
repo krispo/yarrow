@@ -115,5 +115,7 @@ Available arrow options:
 * **textDx** --- horizontal text offset
 * **textDy** --- vertical text offset
 
+* **margin** --- an outer margin for drawing rectangle. Eg, suppose (x1,y1)=(100,100), (x2,y2)=(200,200). If margin={top:0,right:0,bottom:0,left:0}, the drawing rectangle will be (100,100),(200,200). If margin={top:50,right:20,bottom:10,left:30}, the drawing rectangle will be (70,50),(220,210). 
+
 ## Licence
 MIT

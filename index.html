@@ -29,6 +29,17 @@
   </script>
 </head>
 <body>
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <header>
   <div class="title">Yarrow</div>
   <div class="subtitle">Simple svg-based animated arrow pointer</div>
@@ -306,7 +317,15 @@ yarrow.arrow({
 <hr>
 
 <footer>
+
   made with <i class="fa fa-heart-o"></i> by <a href="https://github.com/krispo" target="_blank">Tin Skipor</a>
+  <div class="social">
+    <span><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://krispo.github.io/yarrow/">Tweet</a></span>
+    <span class="fb-share-button" data-href="http://krispo.github.io/yarrow" data-layout="button"></span>
+    <span class="g-plusone" data-size="medium" data-annotation="none"></span>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </div>
 </footer>
 
 <script src="app.js"></script>

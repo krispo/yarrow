@@ -76,7 +76,7 @@ Render the current arrow.
 Dispose the current arrow with specified *duration*, and after specified *delay* time. The arrow is removed completely.
 
 #### .*option_name*(*option_value*)
-*option_name* can take any option from available list of options *opts*. If *option_value* is not specified, returns current option value.
+*option_name* can take any option from available list of options *opts* (except `READ ONLY` properties). If *option_value* is not specified, returns current option value.
 
 ### *opts*
 Available arrow options:
@@ -85,6 +85,11 @@ Available arrow options:
 * **y1** --- source y coordinate
 * **x2** --- target x coordinate
 * **y2** --- target y coordinate
+
+* **dx** --- `READ ONLY` property, equals (x2 - x1)
+* **dy** --- `READ ONLY` property, equals (y2 - y1)
+* **w** --- `READ ONLY` property, equals |x2 - x1|
+* **h** --- `READ ONLY` property, equals |y2 - y1|
 
 * **source** --- selector or node element for source point. Eg, `source: '#source_id'`. After rendering it's converted into object with props: `element`, `top`, `left`, `width`, `height`.  
 * **target** --- selector or node element for target point. Eg, `target: '#target_id'`. After rendering it's converted into object with props: `element`, `top`, `left`, `width`, `height`.

@@ -26,6 +26,25 @@ document.addEventListener('DOMContentLoaded', function main() {
     });
     if (typeof window[id] === 'function') window[id].call(el, el);
   });
+
+  // click to rerun note
+  var ya = new yarrow.Yarrow();
+  ya.arrow({
+      x1: function(_){ return _.source.left - _.source.width; },
+      y1: function(_){ return _.source.top + _.source.height; },
+      x2: function(_){ return _.source.left + _.source.width; },
+      y2: function(_){ return _.target.top + 100; },
+      d: function(_, u){ return u.join(u.M(_.w, 0), u.L(_.w/2, 0), u.Q(0, _.h/2, _.w*2/3, _.h)); },
+      source: '#click2rerun',
+      target: '#ex_basic_output',
+      arrowStyles: {
+        'stroke-width': 4,
+        'stroke': '#ff5a00'
+      },
+      duration: 1000
+    })
+    .render()
+    .dispose(5000,2000);
 });
 
 function ex_basic(el){

@@ -3,7 +3,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   margin: 0;
-  border-top: 2px solid #0070a7;
+  /*border-top: 2px solid #0070a7;*/
 }
 
 /* HEADER */
@@ -19,6 +19,7 @@ header .subtitle { font-size: 1em; margin: .1em; }
   padding: 0 .3em .5em .3em;
   cursor: pointer;
   outline: 1px solid #000;
+  z-index: 100;
 }
 #menu ul {
   opacity: 1;
@@ -41,6 +42,7 @@ header .subtitle { font-size: 1em; margin: .1em; }
 hr {
   display: block;
   margin: 1em auto;
+  margin-top: 1.5em;
   border-style: inset;
   border-width: 1px;
   width: 60%;
@@ -86,5 +88,10 @@ hr {
 /* FOOTER */
 footer {
   height: 2.5em;
-  background-color: #0070a7;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  /*background-color: #0070a7;*/
 }
+footer a { text-decoration: none; color: rgba(0, 0, 0, 0.8); cursor: pointer; }
+footer a:hover { text-decoration: underline;}
+footer .fa { color: rgba(255, 0, 0, 0.51); }

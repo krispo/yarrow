@@ -12,7 +12,6 @@ or include it in html `head` section directly:
 
     <link href="//rawgit.com/krispo/yarrow/master/build/yarrow.css" rel="stylesheet" type="text/css"/>
     <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
-    <script src="//d3js.org/d3-selection-multi.v0.2.min.js"></script>
     <script src="//rawgit.com/krispo/svg-path-utils/master/build/svg-path-utils.min.js"></script>
     <script src="//rawgit.com/krispo/yarrow/master/build/yarrow.js"></script>
   

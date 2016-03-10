@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function main() {
         'stroke-width': 4,
         'stroke': '#ff5a00'
       },
-      duration: 1000
+      duration: 1000,
+      delay: 2000
     })
     .render()
     .dispose(5000,2000);

@@ -1,4 +1,4 @@
-/* Yarrow, v1.0.7 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-09 */
+/* Yarrow, v1.0.8 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-10 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-selection'), require('svg-path-utils')) :
   typeof define === 'function' && define.amd ? define(['exports', 'd3-selection', 'svg-path-utils'], factory) :
@@ -8,6 +8,8 @@
   // Yarrow
   var Yarrow = function(){
     var yarrow = {};
+
+    extendSelection.apply(d3s);
 
     // arrows container
     var arrows = [];
@@ -449,6 +451,25 @@
     }
 
     return arrow;
+  }
+
+  // extend selection with attrs and styles
+  function extendSelection(){
+    var s = this.selection;
+    if (s.attrs) return;
+
+    s.prototype.attrs = function(attrs){
+      for (var name in attrs) {
+        this.attr(name, attrs[name]);
+      }
+      return this;
+    }
+    s.prototype.styles = function(styles, priority){
+      for (var name in styles) {
+        this.style(name, styles[name], priority);
+      }
+      return this;
+    }
   }
 
   exports.Yarrow = Yarrow;

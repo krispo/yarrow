@@ -1,7 +1,6 @@
 .idea
 node_modules/*
 !node_modules/d3-selection
-!node_modules/d3-selection-multi
 !node_modules/svg-path-utils
 !node_modules/yarrow
 examples

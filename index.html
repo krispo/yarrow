@@ -56,6 +56,7 @@
       <li><a href="#ex_animation_off">Animation off</a></li>
       <li><a href="#ex_source_element">Source element</a></li>
       <li><a href="#ex_target_element">Target element</a></li>
+      <li><a href="#ex_paths">Paths</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
       <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
@@ -311,6 +312,59 @@ yarrow.arrow({
       </div>
     </div>
   </div>
+
+  <div id="ex_paths" class="example">
+    <h4>Paths</h4>
+    Piecewise linear arrow
+    <div class="ex_container">
+      <div id="ex_path_1_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x1: 60,
+  y1: 60,
+  x2: 300,
+  y2: 250,
+  d: function(_, u){
+    return u.join(u.M(0, 0), u.L(70, 0), u.L(_.w, _.h));
+  },
+  text: "I'm arrow",
+  arrowStyles: {
+    'stroke-width': 4,
+    'stroke': '#ff5a00'
+  }
+}).render();</code></pre>
+      </div>
+    </div>
+
+    Hover over the section item
+    <div class="ex_container">
+      <div id="ex_path_2_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+yarrow.arrow({
+  x1: 350,
+  y1: 80,
+  x2: function(_){ return _.target.left + _.target.width; },
+  y2: function(_){ return _.target.top + _.target.height/2; },
+  d: function(_, u){
+    return u.join(
+      u.M(_.w, _.dy > 0 ? 0 : _.h),
+      u.L(_.w - 70, _.dy > 0 ? 0 : _.h),
+      u.L(0, _.dy > 0 ? _.h : 0)
+    );
+  },
+  target: el, // section item element
+  text: el.innerHTML,
+  textReverseDirection: true,
+  textStartOffset: 65,
+  animation: false
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <hr>

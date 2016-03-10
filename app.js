@@ -1,4 +1,3 @@
-var d3s;
 var ex = [
   'ex_basic',
   'ex_сurve_path',
@@ -10,12 +9,12 @@ var ex = [
   'ex_durations',
   'ex_animation_off',
   'ex_source_element',
-  'ex_target_element'
+  'ex_target_element',
+  'ex_path_1',
+  'ex_path_2'
 ];
 document.addEventListener('DOMContentLoaded', function main() {
   hljs.initHighlightingOnLoad();
-
-  d3s = d3_selection;
 
   ex.forEach(function(id){
     var el = document.getElementById(id + '_output');
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function main() {
     if (typeof window[id] === 'function') window[id].call(el, el);
   });
 
-  // click to rerun note
+  // for `click to rerun` note
   var ya = new yarrow.Yarrow();
   ya.arrow({
       x1: function(_){ return _.source.left - _.source.width; },
@@ -300,4 +299,66 @@ function ex_target_element(el){
   z_point.setAttribute('style', 'top:28px;left:248px;background-color:black;');
   el.appendChild(z);
   el.appendChild(z_point);
+}
+
+function ex_path_1(el){
+  el.innerHTML = '';
+  var ya = new yarrow.Yarrow();
+  ya.arrow({
+      x1: 60,
+      y1: 60,
+      x2: 300,
+      y2: 250,
+      d: function(_, u){
+        return u.join(u.M(0, 0), u.L(70, 0), u.L(_.w, _.h));
+      },
+      text: "I'm arrow",
+      arrowStyles: {
+        'stroke-width': 4,
+        'stroke': '#ff5a00'
+      }
+    }, el)
+    .render();
+}
+
+function ex_path_2(el){
+  var ya = new yarrow.Yarrow();
+  var ar;
+  el.innerHTML = '<div class="table">' +
+    '<div class="row"><div class="cell"><div class="inner">Section 1</div></div></div>' +
+    '<div class="row"><div class="cell"><div class="inner">Section 2</div></div></div>' +
+    '<div class="row"><div class="cell"><div class="inner">Section 3</div></div></div>' +
+    '</div>';
+  var elems = el.querySelectorAll('.inner');
+
+  Array.prototype.forEach.call(elems, function(elem){
+    elem.addEventListener('mouseover', function(e){
+      renderArrow(e.target);
+    })
+  });
+
+  renderArrow(elems[0]);
+
+  function renderArrow(target){
+    if (ar) ar.dispose();
+    ar = ya.arrow({
+        x1: 350,
+        y1: 80,
+        x2: function(_){return _.target.left+_.target.width;},
+        y2: function(_){return _.target.top+_.target.height/2;},
+        d: function(_, u){
+          return u.join(u.M(_.w, _.dy>0?0:_.h), u.L(_.w-70, _.dy>0?0:_.h), u.L(0, _.dy>0?_.h:0));
+        },
+        target: target,
+        text: target.innerHTML,
+        textReverseDirection: true,
+        textStartOffset: 65,
+        animation: false,
+        arrowStyles: {
+          'stroke-width': 4,
+          'stroke': '#ff5a00'
+        }
+      }, el)
+      .render();
+  }
 }

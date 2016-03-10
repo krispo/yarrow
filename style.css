@@ -62,6 +62,7 @@ hr {
   width:100%;
   height: 20em;
   border: 1px solid #ebebeb;
+  margin-bottom: 1em;
 }
 .ex_container .output, .code {
   position: relative;
@@ -105,3 +106,30 @@ footer .fa { color: rgba(255, 0, 0, 0.51); }
 #___plusone_0 {
   vertical-align: bottom!important;
 }
+
+/*****************************************************/
+/* Examples */
+#ex_path_2_output .table {
+  display: table;
+  width: 30%;
+  height: 100%;
+}
+#ex_path_2_output .row {
+  display: table-row;
+  margin: .1em!important;
+}
+#ex_path_2_output .cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+#ex_path_2_output .inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 2em 0em;
+  border: 1px solid rgba(0, 112, 167, 0.71);
+  background-color: rgba(0, 112, 167, 0.5);
+  color: #fff;
+}
+#ex_path_2_output .inner:hover { background-color: rgba(0, 112, 167, 0.4); }

@@ -7,6 +7,8 @@ export default Yarrow;
 var Yarrow = function(){
   var yarrow = {};
 
+  extendSelection.apply(d3s);
+
   // arrows container
   var arrows = [];
 
@@ -447,4 +449,23 @@ var Arrow = function(parent, opts, el){
   }
 
   return arrow;
+}
+
+// extend selection with attrs and styles
+function extendSelection(){
+  var s = this.selection;
+  if (s.attrs) return;
+
+  s.prototype.attrs = function(attrs){
+    for (var name in attrs) {
+      this.attr(name, attrs[name]);
+    }
+    return this;
+  }
+  s.prototype.styles = function(styles, priority){
+    for (var name in styles) {
+      this.style(name, styles[name], priority);
+    }
+    return this;
+  }
 }

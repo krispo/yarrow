@@ -3,7 +3,6 @@ var test = require('tape'),
     yarrow = require('../')
   ;
 require('d3-selection');
-require('d3-selection-multi');
 require('svg-path-utils');
 
 test('Yarrow tests', function(t){

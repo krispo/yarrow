@@ -1,6 +1,6 @@
 {
   "name": "yarrow",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "svg based animated arrow pointer",
   "keywords": [
     "svg",
@@ -20,7 +20,7 @@
     "test": "faucet test/*-test.js",
     "prepublish": "npm run build"
   },
-  "author": "Konstantin Skipor",
+  "author": "Tin Skipor",
   "repository": {
     "type": "git",
     "url": "https://github.com/krispo/yarrow.git"
@@ -33,7 +33,7 @@
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
-    "d3-selection-multi": "^0.2.9",
+    "d3-selection": "^0.7",
     "svg-path-utils": "^0.0.2"
   }
 }

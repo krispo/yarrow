@@ -1,5 +1,5 @@
 # Yarrow
-
+[![Build Status](https://travis-ci.org/krispo/yarrow.svg?branch=master)](https://travis-ci.org/krispo/yarrow)
 [![NPM Version](http://img.shields.io/npm/v/yarrow.svg?style=flat)](https://www.npmjs.org/package/yarrow)
 
 SVG based animated arrow pointer. 

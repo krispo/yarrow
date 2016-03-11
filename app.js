@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function main() {
       delay: 2000
     })
     .render()
-    .dispose(5000,2000);
+    .dispose(5000,5000);
 });
 
 function ex_basic(el){

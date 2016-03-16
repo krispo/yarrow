@@ -94,7 +94,8 @@ hr {
 
 /* FOOTER */
 footer {
-  padding-bottom: 1em;
+  padding-top: 1em;
+  padding-bottom: 2em;
   text-align: center;
   color: rgba(0, 0, 0, 0.8);
   /*background-color: #0070a7;*/
@@ -102,16 +103,6 @@ footer {
 footer a { text-decoration: none; color: rgba(0, 0, 0, 0.8); cursor: pointer; }
 footer a:hover { text-decoration: underline;}
 footer .fa { color: rgba(255, 0, 0, 0.51); }
-.social {
-  text-align: center;
-  margin: 1em;
-}
-.social .github-button, .social .twitter-share-button {
-  vertical-align: bottom;
-}
-#___plusone_0 {
-  vertical-align: bottom!important;
-}
 
 /*****************************************************/
 /* Examples */

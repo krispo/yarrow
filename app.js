@@ -380,24 +380,25 @@ function ex_chart(el){
 
   //renderArrow(elems[0]);
 
-  function renderArrow(target){
-    console.log(target)
-
+  function renderArrow(max){
     if (ar) ar.dispose();
     ar = ya.arrow({
         x1: 100,
         y1: 100,
-        x2: target.x - 10,
-        y2: target.y + 3,
-        //d: function(_, u){
-        //  return u.join(u.M(_.w, _.dy>0?0:_.h), u.L(_.w-70, _.dy>0?0:_.h), u.L(0, _.dy>0?_.h:0));
-        //},
-        text: 'Max value',
-
+        x2: function(_){ return _.target.left + max.x - 10},
+        y2: function(_){ return _.target.top + max.y + 3},
+        d: function(_, u){
+          return u.join(u.M(0,_.h), u.L(100,_.h), u.L(_.w, 0));
+        },
+        target: '#chart_id',
+        text: max.value + '$ ' + max.date,
         animation: false,
         arrowStyles: {
           'stroke-width': 4,
           'stroke': '#ff5a00'
+        },
+        textStyles: {
+          'font-size': '12px'
         }
       }, el)
       .render();

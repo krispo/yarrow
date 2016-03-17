@@ -71,7 +71,12 @@ function createChart(el, opt, cb){
       .attr('r', 6);
 
     //cb(circle.node());
-    cb({x: x(max.date) + margin.left, y: y(max.close) + margin.top})
+    cb({
+      x: x(max.date) + margin.left,
+      y: y(max.close) + margin.top,
+      date: d3.time.format('%b %Y')(max.date),
+      value: max.close
+    })
   });
 
   function type(d) {

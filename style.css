@@ -142,7 +142,7 @@ footer .fa { color: rgba(255, 0, 0, 0.51); }
 
 
 /* Chart*/
-#chart_id { font-size: 10px;}
+#chart_id { font-size: 10px; }
 .axis path,
 .axis line {
   fill: none;

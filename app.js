@@ -11,7 +11,8 @@ var ex = [
   'ex_source_element',
   'ex_target_element',
   'ex_path_1',
-  'ex_path_2'
+  'ex_path_2',
+  'ex_chart'
 ];
 document.addEventListener('DOMContentLoaded', function main() {
   hljs.initHighlightingOnLoad();
@@ -353,6 +354,46 @@ function ex_path_2(el){
         text: target.innerHTML,
         textReverseDirection: true,
         textStartOffset: 65,
+        animation: false,
+        arrowStyles: {
+          'stroke-width': 4,
+          'stroke': '#ff5a00'
+        }
+      }, el)
+      .render();
+  }
+}
+
+function ex_chart(el){
+  var ya = new yarrow.Yarrow();
+  var ar;
+  el.innerHTML = '<div id="chart_id"></div>';
+  // create chart
+  createChart('#chart_id', {width: 400, height: 316}, renderArrow);
+
+  //var elems = el.querySelectorAll('#chart_id');
+  //Array.prototype.forEach.call(elems, function(elem){
+  //  elem.addEventListener('mouseover', function(e){
+  //    renderArrow(e.target);
+  //  })
+  //});
+
+  //renderArrow(elems[0]);
+
+  function renderArrow(target){
+    console.log(target)
+
+    if (ar) ar.dispose();
+    ar = ya.arrow({
+        x1: 100,
+        y1: 100,
+        x2: target.x - 10,
+        y2: target.y + 3,
+        //d: function(_, u){
+        //  return u.join(u.M(_.w, _.dy>0?0:_.h), u.L(_.w-70, _.dy>0?0:_.h), u.L(0, _.dy>0?_.h:0));
+        //},
+        text: 'Max value',
+
         animation: false,
         arrowStyles: {
           'stroke-width': 4,

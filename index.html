@@ -57,6 +57,7 @@
       <li><a href="#ex_source_element">Source element</a></li>
       <li><a href="#ex_target_element">Target element</a></li>
       <li><a href="#ex_paths">Paths</a></li>
+      <li><a href="#ex_chart">Paths</a></li>
       <hr>
       <li><a href="https://github.com/krispo/yarrow#install" target="_blank">Install</a></li>
       <li><a href="https://github.com/krispo/yarrow#api-reference" target="_blank">API</a></li>
@@ -365,6 +366,25 @@ yarrow.arrow({
     </div>
   </div>
 
+  <div id="ex_chart" class="example">
+    <h4>Chart</h4>
+    <div class="ex_container">
+      <div id="ex_chart_output" class="output"></div>
+      <div class="code">
+          <pre><code class="javascript">var yarrow = new Yarrow();
+
+yarrow.arrow({
+  x1: 100,
+  y1: 100,
+  x2: target.x - 10,
+  y2: target.y - 2,
+  source: "#source_id"
+  text: "I'm arrow"
+}).render();</code></pre>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <hr>
@@ -382,7 +402,9 @@ yarrow.arrow({
   </div>
 </footer>
 
+<script src="//d3js.org/d3.v3.min.js"></script>
 <script src="app.js"></script>
+<script src="chart.js"></script>
 
 </body>
 </html>

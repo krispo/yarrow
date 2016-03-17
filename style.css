@@ -139,3 +139,22 @@ footer .fa { color: rgba(255, 0, 0, 0.51); }
   background-color: rgba(0, 112, 167, 0.35);
 }
 #ex_path_2_output .inner:hover { background-color: rgba(0, 112, 167, 0.25); }
+
+
+/* Chart*/
+#chart_id { font-size: 10px;}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+circle {fill: none; stroke: red; stroke-width: 2px;}

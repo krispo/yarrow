@@ -1,4 +1,4 @@
-/* Yarrow, v1.0.9 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-11 */
+/* Yarrow, v1.0.9 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-18 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-selection'), require('svg-path-utils')) :
   typeof define === 'function' && define.amd ? define(['exports', 'd3-selection', 'svg-path-utils'], factory) :

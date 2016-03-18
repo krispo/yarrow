@@ -34,6 +34,6 @@
   },
   "dependencies": {
     "d3-selection": "^0.7",
-    "svg-path-utils": "^0.0.2"
+    "svg-path-utils": "^0.0"
   }
 }

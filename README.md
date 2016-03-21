@@ -10,10 +10,10 @@ SVG based animated arrow pointer.
 
 or include it in html `head` section directly:
 
-    <link href="//raw.githack.com/krispo/yarrow/v1.0.9/build/yarrow.css" rel="stylesheet" type="text/css"/>
+    <link href="//raw.githack.com/krispo/yarrow/v1.1.0/build/yarrow.css" rel="stylesheet" type="text/css"/>
     <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
     <script src="//raw.githack.com/krispo/svg-path-utils/v0.0.2/build/svg-path-utils.min.js"></script>
-    <script src="//raw.githack.com/krispo/yarrow/v1.0.9/build/yarrow.min.js"></script>
+    <script src="//raw.githack.com/krispo/yarrow/v1.1.0/build/yarrow.min.js"></script>
   
 ## Usage
 

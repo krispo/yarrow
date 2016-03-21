@@ -212,8 +212,12 @@ var Arrow = function(parent, opts, el){
         'animation-duration': _.duration / 1000 + 's',
         'animation-delay': _.delay / 1000 + 's',
         'stroke-dasharray': l + ' ' + l,
-        'stroke-dashoffset': l
+        'stroke-dashoffset': l,
+        'visibility': 'hidden'
       });
+      setTimeout(function(){
+        path.style('visibility', 'visible');
+      }, _.delay);
     }
 
     var tip1 = g.append('path')
@@ -231,8 +235,12 @@ var Arrow = function(parent, opts, el){
         'animation-duration': _.duration1 / 1000 + 's',
         'animation-delay': _.delay1 / 1000 + 's',
         'stroke-dasharray': l1 + ' ' + l1,
-        'stroke-dashoffset': l1
-      })
+        'stroke-dashoffset': l1,
+        'visibility': 'hidden'
+      });
+      setTimeout(function(){
+        tip1.style('visibility', 'visible');
+      }, _.delay1);
     }
     tip1.styles(_.arrowStyles);
 
@@ -251,8 +259,12 @@ var Arrow = function(parent, opts, el){
         'animation-duration': _.duration2 / 1000 + 's',
         'animation-delay': _.delay2 / 1000 + 's',
         'stroke-dasharray': l2 + ' ' + l2,
-        'stroke-dashoffset': l2
-      })
+        'stroke-dashoffset': l2,
+        'visibility': 'hidden'
+      });
+      setTimeout(function(){
+        tip2.style('visibility', 'visible');
+      }, _.delay2);
     }
     tip2.styles(_.arrowStyles);
 

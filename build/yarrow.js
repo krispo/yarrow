@@ -1,4 +1,4 @@
-/* Yarrow, v1.1.0 (https://github.com/krispo/yarrow), MIT Licence, 2016-03-21 */
+/* Yarrow, v1.1.1 (https://github.com/krispo/yarrow), MIT Licence */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('d3-selection'), require('svg-path-utils')) :
   typeof define === 'function' && define.amd ? define(['exports', 'd3-selection', 'svg-path-utils'], factory) :
@@ -302,7 +302,7 @@
             transition: 'all ' + (_.duration / 1000) + 's linear',
             opacity: 1
           })
-        }, 10)
+        }, _.delay + 10)
       }
 
       return this;

@@ -300,7 +300,7 @@ var Arrow = function(parent, opts, el){
           transition: 'all ' + (_.duration / 1000) + 's linear',
           opacity: 1
         })
-      }, 10)
+      }, _.delay + 10)
     }
 
     return this;

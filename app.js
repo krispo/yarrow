@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function main() {
         //'stroke': 'url(#arrowGradient)'
       },
       duration: 1000,
-      delay: 2000
+      delay: 1000
     })
     .render()
     .dispose(5000,5000);
@@ -205,7 +205,7 @@ function ex_styles(el){
         'stroke': '#ff5a00'
       },
       textStyles: {
-        'fill': '#0070a7',
+        'fill': '#008080',
         'font-size': 20,
         'font-weight': 'bold'
       }
@@ -244,7 +244,7 @@ function ex_animation_off(el){
 }
 
 function ex_source_element(el){
-  el.innerHTML = '<div id="ex_source_element_source_id" style="position:absolute;border:1px solid red;top:220px;left:100px;padding:10px;padding-top:6px;">source</div>';
+  el.innerHTML = '<div id="ex_source_element_source_id" style="color:#008080;position:absolute;border:1px solid red;top:220px;left:100px;padding:10px;padding-top:6px;">source</div>';
   var ya = new yarrow.Yarrow();
   ya.arrow({
       x1: function(_){ return _.source.left + _.source.width/2; },
@@ -280,7 +280,7 @@ function ex_source_element(el){
 }
 
 function ex_target_element(el){
-  el.innerHTML = '<div id="ex_target_element_target_id" style="position:absolute;border:1px solid red;top:30px;left:250px;padding:10px;padding-top:6px;">target</div>';
+  el.innerHTML = '<div id="ex_target_element_target_id" style="color:#008080;position:absolute;border:1px solid red;top:30px;left:250px;padding:10px;padding-top:6px;">target</div>';
   var ya = new yarrow.Yarrow();
   ya.arrow({
       x1: 100,

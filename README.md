@@ -17,12 +17,12 @@ Demos:
 
     npm install yarrow
 
-or include it in html `head` section directly:
+and include it in html `head` section:
 
-    <link href="//raw.githack.com/krispo/yarrow/v1.1.0/build/yarrow.css" rel="stylesheet" type="text/css"/>
-    <script src="//d3js.org/d3-selection.v0.6.min.js"></script>
-    <script src="//raw.githack.com/krispo/svg-path-utils/v0.0.3/build/svg-path-utils.min.js"></script>
-    <script src="//raw.githack.com/krispo/yarrow/v1.1.0/build/yarrow.min.js"></script>
+    <link  href="node_modules/yarrow/build/yarrow.css" rel="stylesheet" type="text/css"/>
+    <script src="node_modules/d3-selection/build/d3-selection.min.js"></script>
+    <script src="node_modules/svg-path-utils/build/svg-path-utils.min.js"></script>
+    <script src="node_modules/yarrow/build/yarrow.min.js"></script>
   
 ## Usage
 
@@ -90,8 +90,76 @@ Render the current arrow.
 Dispose the current arrow with specified *duration*, and after specified *delay* time. The arrow is removed completely.
 
 
+#### Options behaviour
+
+Options can be initialized using the following methods:
+ 
+1. *yarrow*.arrow(*opts*)
+2. *yarrow*.arrows(*[opts]*)
+3. *arrow*.options(*opts*)
+
+Under initialization, a set of options 
+
+    x1, y1, x2, y2, d, d1, d2, textReverseDirection, textStartOffset 
+    
+can be define as `function` 
+
+```js
+function(opts, utils) {
+  // opts   - the current options, after initialization
+  // utils  - svg-path-utils
+  return 'some_value'; 
+}
+```
+
+that takes 2 parameters: the current options *opts*, and [svg-path-utils](https://github.com/krispo/svg-path-utils) utilities. 
+It can help us to manipulate dynamic `arrow` behaviour. For example, it is useful when we don't know the coordinates of the source or target elements.
+
+Let's show how it works. Define options
+
+```js
+var opts = {
+
+  source: '#source_id', // define source element via id
+
+  target: document.getElementById('target_id'), // or define target element via document element 
+
+  x1: function(_, u) {
+    // _ - this options object has already had explicit values for `source` and `target`
+    return _.source.left + _.source.width / 2;
+  },
+
+  y1: function(_, u) {     
+    return _.source.top + _.source.height / 2;
+  },
+
+  x2: function(_, u) {   
+    return _.target.left + _.target.width / 2;
+  },
+
+  y2: function(_, u) {     
+    return _.target.top + _.target.height / 2;
+  },
+
+  d: function(_, u) {
+    // _ - this options object has already had explicit values for x1, y1, x2, y2;
+    // _.w and _.h are calculated based on x1, y1, x2, y2
+    return u.join(u.M(0, 0), u.Q(_.w, 0, _.w, _.h));
+  }
+};
+
+yarrow.arrow(opts).render();
+```
+The resulting arrow will start from the middle of the `source` element, and then will go to the middle of the `target` element, 
+and will draw a quadratic Bézier curve.
+
 #### Arrow options
-*option_name* can take any option from available list of options *opts* (except `READ ONLY` properties). If *option_value* is not specified, returns current option value.
+
+All options have `get/set` behaviour, except the options with `READONLY` property.  
+  
+<a name="_options" href="#_options">#</a> <i></i>.<b>options</b>(<i>opts</i>) 
+
+Specifies the arrow options. If *opts* is not defined, returns the current options.
 
 <a name="_x1" href="#_x1">#</a> <i></i>.<b>x1</b>() 
 
@@ -111,27 +179,73 @@ Target y coordinate
 
 <a name="_dx" href="#_dx">#</a> <i></i>.<b>dx</b>() 
 
-`READ ONLY` property, equals (x2 - x1)
+`READONLY` property, equals (x2 - x1)
 
 <a name="_dy" href="#_dy">#</a> <i></i>.<b>dy</b>() 
 
-`READ ONLY` property, equals (y2 - y1)
+`READONLY` property, equals (y2 - y1)
 
 <a name="_w" href="#_w">#</a> <i></i>.<b>w</b>() 
 
-`READ ONLY` property, equals |x2 - x1|
+`READONLY` property, equals |x2 - x1|
 
 <a name="_h" href="#_h">#</a> <i></i>.<b>h</b>() 
 
-`READ ONLY` property, equals |y2 - y1|
+`READONLY` property, equals |y2 - y1|
 
 <a name="_source" href="#_source">#</a> <i></i>.<b>source</b>() 
 
-Selector or node element for source point. Eg, `source: '#source_id'`. After rendering it's converted into object with props: `element`, `top`, `left`, `width`, `height`.  
+Selector or node element for source point. Eg, `source: '#source_id'`. After initialization it's converted into object with props: `element`, `top`, `left`, `width`, `height`.  
+
+```js
+arrow.options({
+  ...,
+  source: "#source_id",
+  ...
+});
+
+arrow.options(); 
+/* returns:
+{
+  ...,
+  source: {
+    element: < html element >,
+    top: 10,
+    left: 20,
+    width: 100,
+    height: 200
+  },  
+  ...
+}
+*/
+```
 
 <a name="_target" href="#_target">#</a> <i></i>.<b>target</b>() 
 
-Selector or node element for target point. Eg, `target: '#target_id'`. After rendering it's converted into object with props: `element`, `top`, `left`, `width`, `height`.
+Selector or node element for target point. Eg, `target: '#target_id'`. After initialization it's converted into object with props: `element`, `top`, `left`, `width`, `height`.
+
+```js
+arrow.options({
+  ...,
+  target: "#target_id",
+  ...
+});
+
+arrow.options(); 
+/* returns:
+{
+  ...,
+  target: {
+    element: < html element >,
+    top: 10,
+    left: 20,
+    width: 100,
+    height: 200
+  },  
+  ...
+}
+*/
+```
     
 <a name="_duration" href="#_duration">#</a> <i></i>.<b>duration</b>() 
 

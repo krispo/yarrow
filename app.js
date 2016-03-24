@@ -39,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function main() {
       target: '#ex_basic_output',
       arrowStyles: {
         'stroke-width': 4,
-        'stroke': '#ff5a00'
+        'stroke': '#fffa00'
+        //'stroke': 'url(#arrowGradient)'
       },
       duration: 1000,
       delay: 2000

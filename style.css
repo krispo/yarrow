@@ -4,15 +4,23 @@ body {
   text-rendering: optimizeLegibility;
   margin: 0;
 
-  background-color: rgba(0, 112, 167, .35);
-  color: black;
-  text-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
+  background-color: rgb(83, 163, 147);
+  color: #fff;
 }
 
 /* HEADER */
 header { text-align: center; }
 header .title { font-size: 2.5em; margin-top: .5em; }
 header .subtitle { font-size: 1em; margin: .1em; }
+
+hr {
+  display: block;
+  margin: 1em auto;
+  margin-top: 1.5em;
+  border-style: dashed;
+  border-width: 1px;
+  width: 60%;
+}
 
 #menu {
   position: fixed;
@@ -21,10 +29,11 @@ header .subtitle { font-size: 1em; margin: .1em; }
   text-align: right;
   padding: 0 .3em .5em .3em;
   cursor: pointer;
-  outline: 1px solid #000;
+  outline: 1px solid #008080;
   background-color: #fff;
   z-index: 100;
 }
+#menu .material-icons { color: rgb(83, 163, 147); }
 #menu ul {
   opacity: 1;
   margin: .5em;
@@ -34,25 +43,23 @@ header .subtitle { font-size: 1em; margin: .1em; }
 }
 @media (max-width: 1120px) {
   #menu { outline: none; background-color: transparent;}
+  #menu .material-icons { color: #fff; }
   #menu ul { opacity: 0; }
 }
 #menu ul > li { padding: 0 .2em .1em .2em;}
 #menu ul > li a { text-decoration: none; color: #000; }
 
-#menu:hover { outline: 1px solid #000; background-color: #fff; }
+#menu:hover { outline: 1px solid #008080; background-color: #fff; }
+#menu:hover .material-icons { color: rgb(83, 163, 147); }
 #menu:hover ul { opacity: 1; }
 #menu ul > li a:hover { text-decoration: underline;}
 
-hr {
-  display: block;
-  margin: 1em auto;
-  margin-top: 1.5em;
+#menu hr {
+  width: 100%;
+  margin: .5em auto;
   border-style: inset;
   border-width: 1px;
-  width: 60%;
-  border-color: rgb(188, 214, 227)
 }
-#menu hr { width: 100%; margin: .5em auto; border-color: #fff;}
 
 /* CONTENT */
 #content {
@@ -66,7 +73,8 @@ hr {
   display: flex;
   width:100%;
   height: 20em;
-  border: 1px solid #ebebeb;
+  border: 1px solid;
+  border-color: #008080 #00B1B1 #00B1B1 #008080;
   margin-bottom: 1em;
 }
 .ex_container .output, .code {
@@ -78,7 +86,7 @@ hr {
 .ex_container .output .coords {
   position: absolute;
   font-size:12px;
-  color: #0070a7;
+  color: #008080;
 }
 .ex_container .output .point {
   position: absolute;
@@ -96,12 +104,11 @@ hr {
 footer {
   padding-bottom: 1em;
   text-align: center;
-  color: rgba(0, 0, 0, 0.8);
-  /*background-color: #0070a7;*/
+  color: #fff;
 }
-footer a { text-decoration: none; color: rgba(0, 0, 0, 0.8); cursor: pointer; }
+footer a { text-decoration: none; color: #fff; cursor: pointer; }
 footer a:hover { text-decoration: underline;}
-footer .fa { color: rgba(255, 0, 0, 0.51); }
+footer .fa { color: #fff; }
 .social {
   text-align: center;
   margin: 1em;
@@ -112,7 +119,7 @@ footer .fa { color: rgba(255, 0, 0, 0.51); }
 #___plusone_0 {
   vertical-align: bottom!important;
 }
-.social .reddit .fa { color: #7D95A4; font-size: 1.15em;}
+.social .reddit .fa { color: #fff; font-size: 1.15em;}
 
 /*****************************************************/
 /* Examples */
@@ -135,10 +142,10 @@ footer .fa { color: rgba(255, 0, 0, 0.51); }
   margin-right: auto;
   width: 80%;
   padding: 2em 0em;
-  border: 1px solid rgba(0, 112, 167, 0.5);
-  background-color: rgba(0, 112, 167, 0.35);
+  border: 1px solid #008080;
+  background-color: rgb(83, 163, 147);
 }
-#ex_path_2_output .inner:hover { background-color: rgba(0, 112, 167, 0.25); }
+#ex_path_2_output .inner:hover { background-color: rgba(83, 163, 147, .75); }
 
 
 /* Chart*/
@@ -154,7 +161,12 @@ footer .fa { color: rgba(255, 0, 0, 0.51); }
 }
 .line {
   fill: none;
-  stroke: steelblue;
+  stroke: #008080;
   stroke-width: 1.5px;
 }
 circle {fill: none; stroke: red; stroke-width: 2px;}
+
+.asd {
+  color: #FF5A00;
+  background-color: #fffa00
+}
